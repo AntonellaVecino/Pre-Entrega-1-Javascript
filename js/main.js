@@ -35,13 +35,9 @@ for (let i = 2; i >= 0; i--) {
 
 //Hago variables y Constante IVA
 let pedido = 0;
-let menu = prompt(
-  "Nuestro Menú: \n1- Carrot Cake 🥕  \n2- Tarta de Santiago 🥧 \n3- Cheesecake Gallego 🍮 \n4- Tarta de Almendras 🥮 \n5- Torta Matilda 🍫 \n6-Tiramisú 🥯 \n7-Selva Negra 🍩  \n8-Tarta de Fresa 🍰 \n9- Confirmar Pedido \n10- Salir del menu"
-);
-let compra = prompt(
-  "Para agregarlo al carrito, ingresa Aceptar. Sino, cancelar. \n Recuerda que el IVA (21%) estará incluido en tu pedido."
-);
-let cantidad = parseInt(prompt("¿Cuantas unidades quieres comprar?"));;
+let menu;
+let compra;
+let cantidad;
 const IVA = 1.21;
 
 //Función para ejecutar todas las compras:
