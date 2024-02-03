@@ -48,10 +48,14 @@ function realizarCompra(precio) {
   switch (compra) {
     case "Aceptar":
       cantidad = parseInt(prompt("¿Cuantas unidades quieres comprar?"));
-      precio = precio * IVA;
-      pedido = pedido + (precio * cantidad);
-      alert("Agregado al carrito. Tu pedido es de $" + pedido);
-      return pedido;
+      if (!isNaN(cantidad)) {
+        precio = precio * IVA;
+        pedido = pedido + (precio * cantidad);
+        alert("Agregado al carrito. Tu pedido es de $" + pedido);
+        return pedido;
+      } else {
+        alert("Ingresa una cantidad válida");
+      }
     default:
       alert("No agregaste nada al carrito");
   }
