@@ -1,19 +1,26 @@
 //Actividad para la pre entrega: Hago un algoritmo mas complejo
 /*
 1) Hago una bienvenida, y un log in con el mail y la password
-2) Creo un menú con algunas opciones de productos, 1 opcion de hacer pedido y otra opcion de cerrar menu
+2) Creo un menú con algunas opciones de productos, un carrito donde pueda sacar cosas, y para finalizar la compra
 3) Hacer que sea posible elegir entre varias opciones, y varias veces un producto, repitiendo el bucle las veces que necesite el usuario
 4) Al confirmar pedido, poner para pagar con tarjeta de debito. Que pongan un dato numerico y, si es de 10 caracteres, confirmar pedido.
 5) Dar mensaje de agradecimiento al finalizar una compra.
 */
 
-alert(
-  "🥮 Bienvenido/a a la tienda virtual de la Pastelería Delicias Galegas 🥮"
-);
-
+//Declaro variables
 let email = "antonella@hotmail.com";
 let password = "1234";
 let ingreso = false;
+let cantidad;
+let carrito = [];
+let menu;
+const IVA = 1.21;
+
+
+//Acá comienza la bienvenida, y el ingreso del usuario con password y email
+alert(
+  "🥮 Bienvenido/a a la tienda virtual de la Pastelería Delicias Galegas 🥮"
+);
 alert(
   "Para acceder al Menú, ingresa a tu cuenta. Tendrás tres intentos. \n Una vez realizado el pedido, se enviará la información al mail ingresado."
 );
@@ -33,91 +40,135 @@ for (let i = 2; i >= 0; i--) {
   }
 }
 
-//Hago variables y Constante IVA
-let pedido = 0;
-let menu;
-let compra;
-let cantidad;
-const IVA = 1.21;
+//Mi array de productos
+const productosALaVenta = [
+  {id: 1, nombre: "Tarta de Queso", precio: 3000, ingredientes: ["Queso crema, Azucar, Leche, Huevos, Esencia"]},
+  {id: 2, nombre: "Tarta de Santiago", precio: 1999.99, ingredientes: ["Bizcocho de vainilla, almendras"]},
+  {id: 3, nombre: "Torta Matilda", precio: 3500, ingredientes: ["Bizcocho de chocolate, ganache de chocolate"]},
+  {id: 4, nombre: "Torta de Frutilla", precio: 2590, ingredientes: ["Masa sablée de vainilla, frutillas, crema de leche"]}
+];
 
-//Función para ejecutar todas las compras:
-function realizarCompra(precio) {
-  compra = prompt(
-    "Para agregarlo al carrito, ingresa Aceptar. Sino, cancelar. \n Recuerda que el IVA (21%) estará incluido en tu pedido."
-  );
-  switch (compra) {
-    case "Aceptar":
-      cantidad = parseInt(prompt("¿Cuantas unidades quieres comprar?"));
-      if (!isNaN(cantidad)) {
-        precio = precio * IVA;
-        pedido = pedido + (precio * cantidad);
-        alert("Agregado al carrito. Tu pedido es de $" + pedido);
-        return pedido;
-      } else {
-        alert("Ingresa una cantidad válida");
-      }
-    default:
-      alert("No agregaste nada al carrito");
-  }
+//Declaro mis funciones:
+
+//Funcion que recorre el array de productos y se los muestra al cliente
+function mostrarProductos () {
+  let listaProductos = (`Nuestros productos Disponibles: \n`);
+productosALaVenta.forEach((producto) => {
+  listaProductos += `ID: ${producto.id}. Producto: ${producto.nombre}. Ingredientes: ${producto.ingredientes}. $${(producto.precio * IVA).toFixed(2)}\n \n`;
+});
+  alert(listaProductos);
 }
 
-//Si el ingreso es verdadero, accede al menu:
-if (ingreso) {
+//Funcion para agregar más productos a la lista: 
+let sumarId = productosALaVenta.length + 1;
+function pasteles(nombre, precio, ingredientes) {
+  this.nombre = nombre;
+  this.precio = precio;
+  this.ingredientes = ingredientes;
+  this.id = sumarId++;
+}
+
+//Funcion que permite al cliente elegir una cantidad mediante un prompt
+
+function elegirCantidad(cantidad) {
   do {
-    menu = prompt(
-      "Nuestro Menú: \n1- Carrot Cake 🥕  \n2- Tarta de Santiago 🥧 \n3- Cheesecake Gallego 🍮 \n4- Tarta de Almendras 🥮 \n5- Torta Matilda 🍫 \n6-Tiramisú 🥯 \n7-Selva Negra 🍩  \n8-Tarta de Fresa 🍰 \n9- Confirmar Pedido \n10- Salir del menu"
-    );
-    switch (menu) {
-      case "1":
-        alert("El precio de la Carrot Cake es de $" + 5000);
-        realizarCompra(5000);
+    cantidad = parseInt(prompt("¿Cuántas unidades deseas llevar?"));
+  } while (isNaN(cantidad) || cantidad < 1);
+  return cantidad;
+}
+
+//Función que recorre los productos que se han agregado en el carrito final y los suma.
+function mostrarCarrito() {
+  let carritoFinal = "Productos en el carrito: \n";
+  let total = 0;
+  carrito.forEach(function(producto) { 
+    carritoFinal +=`producto: ${producto.nombre}, unidades:  ${producto.cantidad} \n`;
+    total += (producto.precio * IVA) * producto.cantidad ;
+  })
+  carritoFinal += "Total de la Compra: " + total.toFixed(2);
+  alert(carritoFinal);
+    return carrito;
+}
+
+//Creo nuevos productos para pushear al array (Esto es mas una prueba de f(x) que genera productos)
+const pastelNuevo1 = new pasteles("Larpeira", 5000, ["Bizcocho de vainilla, crema pastelera"]);
+const pastelNuevo2 = new pasteles("Torta Oreo", 6000, ["Bizcocho de chocolate, crema con oreos, dulce de leche"]);
+const pastelNuevo3 = new pasteles("Pastel Red Velvet", 7500, ["Bizcocho de vainilla húmedo, frosting de queso crema"]);
+const pastelNuevo4 = new pasteles("Torta Brownie", 4550, ["Brownie de chocolate con nueces, dulce de leche, crema de leche"]);
+productosALaVenta.push(pastelNuevo1);
+productosALaVenta.push(pastelNuevo2);
+productosALaVenta.push(pastelNuevo3);
+productosALaVenta.push(pastelNuevo4);
+
+
+//Si el ingreso es true, ejecuto este código que muestra el menú de opciones.
+
+if(ingreso) {
+  do{
+    menu = parseInt(prompt("Accede a nuestros Productos, agrégalos a tu Carrito y Finaliza tu Compra: \n1- Productos \n2- Ver Carrito \n3- Finalizar Compra \n4- Eliminar producto del carrito \n5- Salir del Menú"));
+    switch (menu) {  
+      case 1: 
+      //Muestro los productos al cliente, y hago que elijan uno, y su cantidad respectiva. 
+        mostrarProductos();
+        let eleccionDelCliente = prompt("Ingresa la Id del producto que quieres adquirir, para sumarlo a tu carrito."); 
+        let productoElegido = productosALaVenta.find(producto => producto.id == eleccionDelCliente);
+        let cantidadElegida = elegirCantidad();
+        //Cuando el producto está elegido, igualo su cantidad a la cantidad que puso en el prompt para que se actualice en el carrito
+        if (productoElegido) {
+          productoElegido.cantidad = cantidadElegida;
+          carrito.push(productoElegido);
+          alert(`Se agregó al carrito: ${productoElegido.nombre}`);
+        } else {
+          alert("ID de producto no válido. Inténtalo de nuevo.");
+        }
         break;
-      case "2":
-        alert("El precio de la Tarta de Santiago es de $" + 3000);
-        realizarCompra(3000);
+      case 2:
+        //Acá simplemente muestro el carrito con el total y el id (por si se quiere sacar una cosa)
+        mostrarCarrito();
         break;
-      case "3":
-        alert("El precio del Cheesecake Gallego es de $" + 8000);
-        realizarCompra(8000);
-        break;
-      case "4":
-        alert("El precio de la Tarta de Almendras es de $" + 6000);
-        realizarCompra(6000);
-        break;
-      case "5":
-        alert("El precio de la Torta Matilda es de $" + 7000);
-        realizarCompra(7000);
-        break;
-      case "6":
-        alert("El precio del Tiramisú es de $" + 4500);
-        realizarCompra(4500);
-        break;
-      case "7":
-        alert("El precio de la Torta Selva Negra es de $" + 5500);
-        realizarCompra(5500);
-        break;
-      case "8":
-        alert("El precio de la Tarta de Fresa es de $" + 2500);
-        realizarCompra(2500);
-        break;
-      case "9":
-        alert("El total de tu pedido es de $" + pedido);
+      case 3:
+        //Acá sumo todo lo del carrito y arrojo el total de la compra. 
+        let total = carrito.reduce((acumulador, producto) => acumulador + ((producto.precio * IVA) * producto.cantidad), 0);
+        alert(`Total de la compra: $${total.toFixed(2)}`);
+        if (total === 0) {
+          alert("Tu carrito está vacío! 🐀");
+        } else {
+        //Si el carrito no está vacio, pido los datos de la tarjeta
         tarjeta = prompt("Ingresa los 10 digitos de tu tarjeta.");
         if (tarjeta.length === 10) {
           alert("Pago Exitoso");
           alert("Muchas gracias por confiar en nosotros");
+          //Acá reinicio el carrito y el total, para poder hacer otro pedido de 0
+          carrito = [];
+          total = 0;
           break;
         } else {
           alert("Error: Numero de tarjeta no válido");
         }
+      }
         break;
-      case "10":
-        alert("Saliendo del menú. Muchas gracias por visitarnos.");
+      case 4: 
+      if (carrito.length === 0) { 
+        alert("Tu carrito está vacío! 🐀"); 
+        break; 
+      } 
+      //Acá le pido al cliente que ponga la id del producto que quiere sacar del carrito
+      let sacarId = parseInt(prompt("Ingresa el ID del producto que quieres sacar de tu carrito:")); 
+      //Busco esa id en el carrito. Y si no está, arroja que no hay un id correcto
+      let productoEliminado = carrito.find(producto => producto.id === sacarId); 
+      if (productoEliminado) { 
+        //acá hago que el carrito se actualice. El producto.id !== sacarId, asi lo puedo quitar del carrito.
+        carrito = carrito.filter(producto => producto.id !== sacarId); 
+        alert(`Se sacó ${productoEliminado.nombre} del carrito`); 
+      } else { alert("ID de producto no válido. Inténtalo de nuevo."); 
+    } break;
+      case 5:
+        alert("Saliendo del menu de productos");
+        ingreso = false;
         break;
       default:
         alert("Opción no válida. Inténtalo de nuevo.");
+        break;
     }
-  } while (menu !== "10");
-} else {
-  alert("Intenta ingresar nuevamente.");
+  }while (ingreso);
 }

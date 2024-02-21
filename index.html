@@ -12,14 +12,14 @@
     <!-- fin animate y wow -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="./photos/logo/_abe4cc59-ce71-4f50-b86e-7b96d12760ae-removebg-preview.png">
-    <link rel="stylesheet" href="./estilos/styles.css">
-    <title>Pastelería Delicias Galegas | Inicio</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>Pastelería Delicias Galegas | Menú</title>
 </head>
 <body>
 <header>
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/index.html">
+      <a class="navbar-brand" href="./index.html">
         <img
               id="logoPasteleria"
               src="./photos/logo/_abe4cc59-ce71-4f50-b86e-7b96d12760ae-removebg-preview.png"
@@ -34,55 +34,21 @@
         </span>
       </button>
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav text-center">
+        <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link mx-2" href="#!"><i class="fa-solid fa-stroopwafel pe-2" style="color: #51461f;"></i></i>Inicio</a>
+            <a class="nav-link mx-2" href="index.html"><i class="fa-solid fa-stroopwafel pe-2 mx-2" style="color: #51461f;"></i></i>Tienda</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link mx-2" href="#!"><i class="fa-solid fa-cookie-bite pe-2" style="color: #be953c;"></i></i></i>Menú</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link mx-2" href="#!"><i class="fas fa-heart pe-2" style="color: #d64848;"></i>Nosotros</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link mx-2" href="#!"><i class="fa-solid fa-gift pe-2" style="color: #e81772;"></i>Eventos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link mx-2" href="#!"><i class="fa-solid fa-utensils pe-2" style="color: #000000;"></i>Cursos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link mx-2" href="#!"><i class="fa-solid fa-store pe-2" style="color: #e81772;"></i>Tienda</a>
-          </li>
-          <div class="dropdown text-center d-flex justify-content-center">
-            <button type="button" class="btn dropdown" data-bs-toggle="dropdown">
-              <i class="fa-regular fa-user fa-lg  pr-5 pe-2" style="color: #000000;"></i>
+          <li>
+          <div class="text-center d-flex justify-content-center botonRegister">
+            <button onclick="location.href='./pages/register.html'" type="button" class="btn">
+              <i class="fa-regular fa-user fa-lg pe-2" style="color: #000000;"></i>
             </button>
-            <ul class="dropdown-menu">
-              <li>
-                <form action="/action_page.php">
-                  <div class="mb-3 mt-3">
-                    <label for="name" class="form-label">Usuario:</label>
-                    <input type="name" class="form-control" id="name" placeholder="Ingresa tu usuario" name="name">
-                  </div>
-                  <div class="mb-3">
-                    <label for="pwd" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Tu contraseña" name="pswd">
-                  </div>
-                  <div class="form-check mb-3">
-                    <label class="form-check-label">
-                      <input class="form-check-input" type="checkbox" name="remember"> Recuerdame
-                    </label>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Ingresar</button>
-                </form>
-              </li>
-              <li><a class="dropdown-item" href="#">Registrarme</a></li>
-            </ul>
           </div>
+          </li>
           <li class="nav-item plataformaCompras">
             <a href="./pages/tienda.html"><i class="fa-solid fa-bag-shopping fa-lg pe-2 plataformaCompras" style="color: #000000;"></i></a>
           </li>
-          <li class="nav-item plataformaCompras">
+          <li class="nav-item whatsapp">
             <a href="#">
               <i class="fa-brands fa-whatsapp fa-lg pe-2" style="color: #000000;"></i>
             </a>
@@ -93,305 +59,277 @@
   </nav>
 </header>
 <main>
-  <!-- presentacion -->
-<div class="container-fluid">
-<div class="mt-4 p-5 rounded jumbotron">
-  <div class="row">
-  <div class="col-md-6 text-center d-flex description">
-  <h1>Pastelería "Delicias Galegas"</h1>
-  <p>
-    <strong>Nuestra tradición Gallega, en las mejores dulzuras</strong>
-  </p>
-  <p>Ven a degustar los mejores sabores de la gastronomía Gallega, rica en cultura y diversidad de sabores.</p>
-  <p>
-    <small>Desde pasteles, tartas y dulces; hasta platos típicos que podrás conocer y degustar con nosotros.</small>
-  </p>
-  <p><a class="btn botonCallToAction" href="./pages/menu.html">Ver Menú</a></p>
-</div>
-<div class="col-md-6">
-  <img src="./photos/multimedia/Tartasantiago10-removebg-preview.png" class="img-fluid" alt="tarta santiago">
-</div>
-</div>
-</div>
-</div>
-<!-- fin presentacion -->
-<!-- ofrecemos -->
-<div class="mt-5 text-center p-4">
-<h2>¿Qué te Ofrecemos?</h2>
-</div>
-<div class="container-fluid d-flex justify-content-center tarjetasPostres mt-3 text-center">
-  <!-- fila de cartas 1 -->
-  <div class="cartas1">
-  <div class="row cols-md-8 d-flex justify-content-center">
-  <div class="card" style="width: 17rem;">
-    <img src="https://www.esturirafi.com/wp-content/uploads/2015/02/filloas-integrales-768x512.jpg" class="card-img-top" alt="filloas">
-    <div class="card-body">
-      <div class="tituloCard">
-      <h3 class="card-title">Filloas Rellenas</h3>
-      </div>
-      <p class="card-text">Típicas de Carnaval, las Filloas pueden ir rellenas como más te gusten, con nuestros dulces caseros.</p>
-      <a href="#">Ver Precio</a>
-    </div>
-  </div>
-  <div class="card" style="width: 17rem;">
-    <img src="https://tse2.mm.bing.net/th?id=OIP.Da6v5mYiHoykK4JSM9c9TAHaE8&pid=Api&P=0&h=180" class="card-img-top" alt="larpeira">
-    <div class="card-body">
-      <div class="tituloCard">
-      <h3 class="card-title">Larpeira</h3>
-      </div>
-      <p class="card-text">Es un pan dulce relleno de crema pastelera con un ligero toque de anís. Característico de nuestra Galicia.</p>
-      <a href="#">Ver Precio</a>
-    </div>
-  </div>
-  <div class="card" style="width: 17rem;">
-    <img src="https://tse2.mm.bing.net/th?id=OIP.lyJXdwooE_5q6FfPzBwhRAHaFB&pid=Api&P=0&h=180" class="card-img-top" alt="melindres">
-    <div class="card-body">
-      <div class="tituloCard">
-      <h3 class="card-title">Melindres</h3>
-      </div>
-      <p class="card-text">Deliciosas rosquillas cubiertas de azúcar glaseado, típicas de Ponteareas y Mélide por excelencia.</p>
-      <a href="#">Ver Precio</a>
-    </div>
-  </div>
-  <div class="card" style="width: 17rem;">
-    <img src="https://tse2.mm.bing.net/th?id=OIP.cnww0FhNJ5SO36el-DBZYQHaE8&pid=Api&P=0&h=180" class="card-img-top" alt="orejas">
-    <div class="card-body">
-      <div class="tituloCard">
-      <h3 class="card-title">Orejas de carnaval</h3>
-      </div>
-      <p class="card-text">Típicas de Carnaval, las Orejas son pasteles fritos similares a las tortas fritas que se acompañan con azucar y/o miel.</p>
-      <a href="#">Ver Precio</a>
-    </div>
-</div>
-</div>
-</div>
-<!-- fin fila de cartas 1 -->
-<!-- fila de cartas 2 -->
-<div class="cartas2">
-  <div class="row cols-md-4 d-flex justify-content-center">
-<div class="card" style="width: 17rem;">
-  <img src="https://tse4.mm.bing.net/th?id=OIP.HHvXJOGmzK2vc7qtuwKQWgHaHa&pid=Api&P=0&h=180" class="card-img-top" alt="tarta almendras">
-  <div class="card-body">
-    <div class="tituloCard">
-    <h3 class="card-title">Tarta de Almendras</h3>
-    </div>
-    <p class="card-text">De Mondoñedo, esta tarta es muy suave y versátil. Se acompaña con guindas y otras frutas en conserva.</p>
-    <a href="#">Ver Precio</a>
-  </div>
-</div>
-<div class="card" style="width: 17rem;">
-  <img src="https://tse1.mm.bing.net/th?id=OIP.eS2XTzhqImA-JUcctyl-0AHaFj&pid=Api&P=0&h=180" class="card-img-top" alt="mantecadas">
-  <div class="card-body">
-    <div class="tituloCard">
-    <h3 class="card-title">Bica Mantecada</h3>
-  </div>
-    <p class="card-text">Es un pan dulce estilo bizcocho, con una superficie crocante. Ideal para acompañarla con leche o mermelada.</p>
-    <a href="#">Ver Precio</a>
-  </div>
-</div>
-<div class="card" style="width: 17rem;">
-  <img src="https://tse4.mm.bing.net/th?id=OIP.sFyIYrwTrvcMd6YU3kUawgHaE8&pid=Api&P=0&h=180" class="card-img-top" alt="tarta santiago">
-  <div class="card-body">
-    <div class="tituloCard">
-    <h3 class="card-title">Tarta de Santiago</h3>
-  </div>
-    <p class="card-text">Originaria de Santiago de Compostela, es uno de los dulces más icónicos de Galicia. Su tierna masa es de almendras.</p>
-    <a href="#">Ver Precio</a>
-</div>
-</div>
-<div class="card" style="width: 17rem;">
-  <img src="https://tse3.mm.bing.net/th?id=OIP.sbAQ9s2wflVmsGMUyGWPWgHaHa&pid=Api&P=0&h=180" class="card-img-top" alt="tarta queso">
-  <div class="card-body">
-    <div class="tituloCard">
-    <h3 class="card-title">Cheesecake Gallego</h3>
-  </div>
-    <p class="card-text">Una tarta deliciosa, cremosa, suave, que no te “aburre” y sin problema te comerías un trozo más.</p>
-    <a href="#">Ver Precio</a>
-  </div>
-</div>
-</div>
-</div>
-<!-- fin fila de cartas 2 -->
-</div>
-<!-- fin ofrecemos -->
-<!-- inicio tercer sector -->
-<div class="mt-5 text-center p-4">
-  <h3>Contamos con variedad de platos, con un menú completo en el que podrás degustar:</h3>
-  </div>
-  <div class="container-fluid d-flex justify-content-center align-content-center promoComida mt-3 text-center">
-    <div class="card col-md-3 comida comida1">
-      <img src="https://www.cronista.com/files/image/672/672716/64f74cb3908a7.jpg" class="img-thumbnail" alt="leche frita">
-      <div class="card-img-overlay comida">
-        <a href="">
-      <p class="card-text">
-        <strong>DULCES</strong>
-      </p>
-      <p class="card-text">
-        <strong>ELABORADOS</strong>
-      </p>
-        </a>
-    </div>
-    </div>
-    <div class="card col-md-3 comida comida2">
-      <img src="https://www.lavozdegalicia.es/default/2023/07/27/00121690447845180357999/Foto/tartadequesodos.jpg" class="img-thumbnail" alt="tarta de queso gallega">
-      <div class="card-img-overlay comida">
-        <a href="#">
-      <p class="card-text">
-        <strong>TARTAS</strong>
-      </p>
-      <p class="card-text">
-        <strong>DULCES</strong>
-      </p>
-        </a>
-    </div>
-    </div>
-    <div class="card col-md-3 comida comida3">
-      <img src="https://content-cocina.lecturas.com/medio/2018/07/19/paso-a-paso-para-realizar-empanada-gallega-de-atun-pimientos-y-tomate-resultado-final_88d0c73c_600x600.jpg" class="img-thumbnail" alt="empanada gallega">
-      <div class="card-img-overlay comida">
-        <a href="#">
-      <p class="card-text">
-        <strong>TARTAS</strong>
-      </p>
-      <p class="card-text">
-        <strong>SALADAS</strong>
-      </p>
-        </a>
-      </div>
-    </div>
-    <div class="card col-md-3 comida comida4">
-      <img src="https://citymagazine.cl/wp-content/uploads/2022/12/Torta-Selva-Negra.jpg" class="img-thumbnail" alt="Pastel Selva Negra">
-      <div class="card-img-overlay comida">
-        <a href="#">
-      <p class="card-text">
-        <strong>PASTELES</strong>
-      </p>
-      <p class="card-text">
-        <strong>Y CUPCAKES</strong>
-      </p>
-        </a>
-      </div>
-    </div>
-  </div>
-<!-- fin tercer sector -->
-<!-- inicia cuarto sector -->
-<div class="cursos">
-  <div class="mt-5 text-center p-4">
-    <h3>Nuestros Cursos</h3>
-  </div>
-  <div class="row cols-md-12 d-flex justify-content-center text-center tarjetasCursos">
-      <div class="card" style="width: 35rem;">
-        <img src="https://cdn.pixabay.com/photo/2018/09/11/11/47/cake-3669245_640.jpg" class="card-img-top" alt="pastel decorado fashion">
-        <div class="card-body">
-          <h4 class="card-title">Decoración de Pasteles</h4>
-          <p class="card-text">En este curso, aprenderás lo básico para decorar tus pasteles, desde alisado de buttercream hasta emparejado de bizcochos. Incluye:</p>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Clases Presenciales, con un horario cómodo y flexible.</li>
-          <li class="list-group-item">Clases Virtuales, con lo visto en vivo + material extra</li>
-          <li class="list-group-item">Receta infalible de bizcocho + Libro de Rellenos</li>
-        </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">COMPRAR CURSO</a>
-          <a href="#" class="card-link">QUIERO MÁS INFO</a>
-        </div>
-      </div>
-      <div class="card" style="width: 35rem;">
-        <img src="https://cdn.pixabay.com/photo/2018/10/04/15/19/cupcake-3723832_640.jpg" class="card-img-top" alt="cupcakes de distintos colores">
-        <div class="card-body">
-          <h4 class="card-title">Cupcakes: Su ciencia, y cómo decorarlos.</h4>
-          <p class="card-text">En este curso, aprenderás cómo hacer una masa de cupcakes perfecta, infusionando sabores; y todos los tipos de cremas para decorar. Incluye:</p>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Clases EN VIVO, con un horario cómodo y flexible.</li>
-          <li class="list-group-item">Libro de Recetas Digital</li>
-          <li class="list-group-item">Receta de frosting + TIPS de armado</li>
-        </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">COMPRAR CURSO</a>
-          <a href="#" class="card-link">QUIERO MÁS INFO</a>
-        </div>
-      </div>
-    </div>
-    <div class="row cols-md-12 d-flex justify-content-center text-center tarjetasCursos">
-      <div class="card" style="width: 35rem;">
-        <img src="https://cdn.pixabay.com/photo/2020/02/19/20/14/macarons-4863162_640.jpg" class="card-img-top" alt="macarons celestes rellenos con crema rosa">
-        <div class="card-body">
-          <h4 class="card-title">Guía Definitiva para Macarons Perfectos</h4>
-          <p class="card-text">En este curso, aprenderás todo lo que necesitas para que tus macarons sean perfectos, no se hundan, y tengan ese característico globito bien formado. Incluye:</p>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Clases Presenciales / En línea.</li>
-          <li class="list-group-item">Las clases quedarán grabadas, para ambas modalidades</li>
-          <li class="list-group-item">Libro de Receta de Macarons, TIPS para colorearlos, y rellenos aptos.</li>
-        </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">COMPRAR CURSO</a>
-          <a href="#" class="card-link">QUIERO MÁS INFO</a>
-        </div>
-      </div>
-      <div class="card" style="width: 35rem;">
-        <img src="https://cdn.pixabay.com/photo/2020/03/10/03/49/red-velvet-cake-4917734_640.jpg" class="card-img-top" alt="Tarta de crema red velvet, rellena con frosting">
-        <div class="card-body">
-          <h4 class="card-title">Cremas, Rellenos, Coberturas y Fondant: Trucos y Recetas</h4>
-          <p class="card-text">En este curso, aprenderás cómo lograr la consistencia adecuada de los rellenos y coberturas en crema, y su uso adecuado; cremas en base a mantequilla; y fondant. Incluye:</p>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Clases En Línea, en vivo y grabadas.</li>
-          <li class="list-group-item">Libro de Recetas Digital de Cremas y Fondant</li>
-          <li class="list-group-item">TIPS de boquillas, uso correcto de la manga, y alisado de crema perfecto.</li>
-        </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">COMPRAR CURSO</a>
-          <a href="#" class="card-link">QUIERO MÁS INFO</a>
-        </div>
-      </div>
-    </div>
-    <div class="row cols-md-12 d-flex justify-content-center text-center tarjetasCursos">
-      <div class="card" style="width: 35rem;">
-        <img src="https://cdn.pixabay.com/photo/2021/05/28/07/36/cake-6290101_640.jpg" class="card-img-top" alt="macarons celestes rellenos con crema rosa">
-        <div class="card-body">
-          <h4 class="card-title">Bizcochos: Recetas y todo lo que debes saber, para una tarta perfecta.</h4>
-          <p class="card-text">En este curso, aprenderás las mejores recetas de bizcochos, para que tus pasteles sean suaves y esponjosos; pero con la firmeza ideal para decorarlas como más te guste. Incluye:</p>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Clases en Vivo, Presenciales.</li>
-          <li class="list-group-item">Las clases quedarán grabadas, para que puedas verlas cuando quieras.</li>
-          <li class="list-group-item">Recetario exclusivo de Bizcochos Prefectos.</li>
-        </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">COMPRAR CURSO</a>
-          <a href="#" class="card-link">QUIERO MÁS INFO</a>
-        </div>
-      </div>
-      <div class="card" style="width: 35rem;">
-        <img src="https://cdn.pixabay.com/photo/2023/08/14/19/13/brigadier-8190601_640.jpg" class="card-img-top" alt="Tarta de crema red velvet, rellena con frosting">
-        <div class="card-body">
-          <h4 class="card-title">Postres Fáciles, y Deliciosos</h4>
-          <p class="card-text">En este curso, aprenderás a preparar . Incluye:</p>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Clases En Línea, en vivo y grabadas.</li>
-          <li class="list-group-item">Libro de Recetas Digital de Cremas y Fondant</li>
-          <li class="list-group-item">TIPS de boquillas, uso correcto de la manga, y alisado de crema perfecto.</li>
-        </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">COMPRAR CURSO</a>
-          <a href="#" class="card-link">QUIERO MÁS INFO</a>
-        </div>
-      </div>
-    </div>
-    <div class="container text-white text-center justify-content-center d-flex pt-3 pb-5">
-      <div class="col-6 textoCursos">
-      <p class="p-5">
-          Para realizar estos cursos, NO necesitas contar con experiencia previa. Se te brindará toda la información necesaria en las clases.
-          Puedes realizar los cursos en cualquier parte del mundo, de manera virtual y con los Libros Digitales.
-      </p>
-    </div>
-    </div>
-  </div>
-</div>
-
-<!-- fin cuarto sector -->
+    <section class="section-products">
+		<div class="container">
+				<div class="row justify-content-center text-center">
+						<div class="col-md-8 col-lg-6 headerTienda">
+								<div class="">
+										<h3>Nuestra Tienda Virtual</h3>
+										<h2>Aquí encontrarás todos nuestros productos</h2>
+								</div>
+						</div>
+					</div>
+          <div class="row justify-content-center text-center mb-5">
+							<div class="col-md-4 col-lg-6 justify-content-center align-items-center mb-3 mt-5">
+								<form class="d-flex">
+									<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+									<button class="btn btn-outline-success" type="submit">Search</button>
+								  </form>
+							</div>
+				</div>
+				<div class="row">
+						<!-- Single Product -->
+						<div class="col-md-6 col-lg-4 col-xl-3">
+								<div id="product-1" class="single-product">
+										<div class="part-1">
+												<ul>
+														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+														<li><a href="#"><i class="fas fa-heart"></i></a></li>
+												</ul>
+										</div>
+										<div class="part-2">
+												<h3 class="product-title">Filloas Rellenas (12 unidades)</h3>
+												<h4 class="product-old-price">€6.00</h4>
+												<h4 class="product-price">€3.40</h4>
+										</div>
+								</div>
+						</div>
+						<!-- Single Product -->
+						<div class="col-md-6 col-lg-4 col-xl-3">
+								<div id="product-2" class="single-product">
+										<div class="part-1">
+												<ul>
+														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+														<li><a href="#"><i class="fas fa-heart"></i></a></li>
+												</ul>
+										</div>
+										<div class="part-2">
+												<h3 class="product-title">Larpeira (Rinde 8 pc.)</h3>
+												<h4 class="product-price">€5.00</h4>
+										</div>
+								</div>
+						</div>
+						<!-- Single Product -->
+						<div class="col-md-6 col-lg-4 col-xl-3">
+								<div id="product-3" class="single-product">
+										<div class="part-1">
+												<ul>
+														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+														<li><a href="#"><i class="fas fa-heart"></i></a></li>
+												</ul>
+										</div>
+										<div class="part-2">
+												<h3 class="product-title">Bica Mantecada (rinde 8 pc.)</h3>
+												<h4 class="product-old-price">€15.00</h4>
+												<h4 class="product-price">$9.50</h4>
+										</div>
+								</div>
+						</div>
+						<!-- Single Product -->
+						<div class="col-md-6 col-lg-4 col-xl-3">
+								<div id="product-4" class="single-product">
+										<div class="part-1">
+												<span class="new">new</span>
+												<ul>
+														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+														<li><a href="#"><i class="fas fa-heart"></i></a></li>
+												</ul>
+										</div>
+										<div class="part-2">
+												<h3 class="product-title">Carrot Cake (rinde 8 pc.)</h3>
+												<h4 class="product-price">€20.00</h4>
+										</div>
+								</div>
+						</div>
+						<!-- Single Product -->
+						<div class="col-md-6 col-lg-4 col-xl-3">
+								<div id="product-5" class="single-product">
+										<div class="part-1">
+												<ul>
+														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+														<li><a href="#"><i class="fas fa-heart"></i></a></li>
+												</ul>
+										</div>
+										<div class="part-2">
+												<h3 class="product-title">Tarta de Almendras (rinde 8 tz.)</h3>
+												<h4 class="product-old-price">€25.00</h4>
+												<h4 class="product-price">€19.99</h4>
+										</div>
+								</div>
+						</div>
+						<!-- Single Product -->
+						<div class="col-md-6 col-lg-4 col-xl-3">
+								<div id="product-6" class="single-product">
+										<div class="part-1">
+												<span class="discount">15% off</span>
+												<ul>
+														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+														<li><a href="#"><i class="fas fa-heart"></i></a></li>
+												</ul>
+										</div>
+										<div class="part-2">
+												<h3 class="product-title">Tarta de Santiago (rinde 8 tz)</h3>
+												<h4 class="product-price">€20.00</h4>
+										</div>
+								</div>
+						</div>
+						<!-- Single Product -->
+						<div class="col-md-6 col-lg-4 col-xl-3">
+								<div id="product-7" class="single-product">
+										<div class="part-1">
+												<ul>
+														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+														<li><a href="#"><i class="fas fa-heart"></i></a></li>
+												</ul>
+										</div>
+										<div class="part-2">
+												<h3 class="product-title">CheeseCake Gallego (rinde 8 pc.)</h3>
+												<h4 class="product-old-price">$28.00</h4>
+												<h4 class="product-price">$20.00</h4>
+										</div>
+								</div>
+						</div>
+						<!-- Single Product -->
+						<div class="col-md-6 col-lg-4 col-xl-3">
+								<div id="product-8" class="single-product">
+										<div class="part-1">
+												<span class="discount">10% off</span>
+												<ul>
+														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+														<li><a href="#"><i class="fas fa-heart"></i></a></li>
+												</ul>
+										</div>
+										<div class="part-2">
+												<h3 class="product-title">Pastel de Matilda (rinde 8 pc.)</h3>
+												<h4 class="product-price">€40.00</h4>
+										</div>
+								</div>
+						</div>
+						<!-- Single Product -->
+						<div class="col-md-6 col-lg-4 col-xl-3">
+							<div id="product-9" class="single-product">
+									<div class="part-1">
+										<span class="new">new</span>
+											<ul>
+													<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+													<li><a href="#"><i class="fas fa-heart"></i></a></li>
+											</ul>
+									</div>
+									<div class="part-2">
+											<h3 class="product-title">Pastel Red Velvet (rinde 12 pc.)</h3>
+											<h4 class="product-price">$35.00</h4>
+									</div>
+							</div>
+					</div><!-- Single Product -->
+					<div class="col-md-6 col-lg-4 col-xl-3">
+							<div id="product-10" class="single-product">
+									<div class="part-1">
+											<ul>
+													<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+													<li><a href="#"><i class="fas fa-heart"></i></a></li>
+											</ul>
+									</div>
+									<div class="part-2">
+											<h3 class="product-title">Tarta Oreo (rinde 8 pc.)</h3>
+											<h4 class="product-price">$39.99</h4>
+									</div>
+							</div>
+					</div><!-- Single Product -->
+					<div class="col-md-6 col-lg-4 col-xl-3">
+							<div id="product-11" class="single-product">
+									<div class="part-1">
+										<span class="discount">10% off</span>
+											<ul>
+													<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+													<li><a href="#"><i class="fas fa-heart"></i></a></li>
+											</ul>
+									</div>
+									<div class="part-2">
+											<h3 class="product-title">Tarta Brownie (rinde 8 pc.)</h3>
+											<h4 class="product-old-price">$30.00</h4>
+											<h4 class="product-price">$27.00</h4>
+									</div>
+							</div>
+					</div><!-- Single Product -->
+					<div class="col-md-6 col-lg-4 col-xl-3">
+							<div id="product-12" class="single-product">
+									<div class="part-1">
+											<ul>
+													<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+													<li><a href="#"><i class="fas fa-heart"></i></a></li>
+											</ul>
+									</div>
+									<div class="part-2">
+											<h3 class="product-title">Milhojas de Frambuesa (rinde 8 pc.)</h3>
+											<h4 class="product-price">$20.00</h4>
+									</div>
+							</div>
+					</div>
+					<!-- Single Product -->
+					<div class="col-md-6 col-lg-4 col-xl-3">
+						<div id="product-13" class="single-product">
+								<div class="part-1">
+										<ul>
+												<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+												<li><a href="#"><i class="fas fa-heart"></i></a></li>
+										</ul>
+								</div>
+								<div class="part-2">
+										<h3 class="product-title">Palmeritas de Hojalde (caja de 500 gr.)</h3>
+										<h4 class="product-price">€8.50</h4>
+								</div>
+						</div>
+				</div>
+				<!-- Single Product -->
+				<div class="col-md-6 col-lg-4 col-xl-3">
+					<div id="product-14" class="single-product">
+							<div class="part-1">
+									<span class="discount">10% off</span>
+									<ul>
+											<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+											<li><a href="#"><i class="fas fa-heart"></i></a></li>
+									</ul>
+							</div>
+							<div class="part-2">
+									<h3 class="product-title">Pastas de Té (surtidas)</h3>
+									<h4 class="product-price">€15.00</h4>
+							</div>
+					</div>
+			</div>
+			<!-- Single Product -->
+			<div class="col-md-6 col-lg-4 col-xl-3">
+				<div id="product-15" class="single-product">
+						<div class="part-1">
+								<ul>
+										<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+										<li><a href="#"><i class="fas fa-heart"></i></a></li>
+								</ul>
+						</div>
+						<div class="part-2">
+								<h3 class="product-title">Donas Surtidas (caja de 12 unidades)</h3>
+								<h4 class="product-price">€24.00</h4>
+						</div>
+				</div>
+		</div>
+		<!-- Single Product -->
+		<div class="col-md-6 col-lg-4 col-xl-3">
+			<div id="product-16" class="single-product">
+					<div class="part-1">
+							<span class="new">new</span>
+							<ul>
+									<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+									<li><a href="#"><i class="fas fa-heart"></i></a></li>
+							</ul>
+					</div>
+					<div class="part-2">
+							<h3 class="product-title">Rollos de Canela (6 unidades)</h3>
+							<h4 class="product-price">€12.60</h4>
+					</div>
+			</div>
+	</div>
+				</div>
+		</div>
+</section>
 </main>
 <!-- inicia Footer -->   
 <section class="mt-5 elFooter">
@@ -460,6 +398,6 @@
         <script>
           AOS.init();
         </script>
-        <script src="./js/main.js"></script>
+		<script src="./js/main.js"></script>
 </body>
 </html>
