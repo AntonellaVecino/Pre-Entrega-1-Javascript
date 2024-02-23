@@ -42,10 +42,10 @@ for (let i = 2; i >= 0; i--) {
 
 //Mi array de productos
 const productosALaVenta = [
-  {id: 1, nombre: "Tarta de Queso", precio: 3000, ingredientes: ["Queso crema, Azucar, Leche, Huevos, Esencia"]},
-  {id: 2, nombre: "Tarta de Santiago", precio: 1999.99, ingredientes: ["Bizcocho de vainilla, almendras"]},
-  {id: 3, nombre: "Torta Matilda", precio: 3500, ingredientes: ["Bizcocho de chocolate, ganache de chocolate"]},
-  {id: 4, nombre: "Torta de Frutilla", precio: 2590, ingredientes: ["Masa sablée de vainilla, frutillas, crema de leche"]}
+  {id: 1, nombre: "Tarta de Queso", precio: 3000, ingredientes: ["Queso crema", "Azucar", "Leche", "Huevos", "Esencia"]},
+  {id: 2, nombre: "Tarta de Santiago", precio: 1999.99, ingredientes: ["Bizcocho de vainilla", "almendras"]},
+  {id: 3, nombre: "Torta Matilda", precio: 3500, ingredientes: ["Bizcocho de chocolate", "ganache de chocolate"]},
+  {id: 4, nombre: "Torta de Frutilla", precio: 2590, ingredientes: ["Masa sablée de vainilla", "frutillas", "crema de leche"]}
 ];
 
 //Declaro mis funciones:
@@ -91,10 +91,10 @@ function mostrarCarrito() {
 }
 
 //Creo nuevos productos para pushear al array (Esto es mas una prueba de f(x) que genera productos)
-const pastelNuevo1 = new pasteles("Larpeira", 5000, ["Bizcocho de vainilla, crema pastelera"]);
-const pastelNuevo2 = new pasteles("Torta Oreo", 6000, ["Bizcocho de chocolate, crema con oreos, dulce de leche"]);
-const pastelNuevo3 = new pasteles("Pastel Red Velvet", 7500, ["Bizcocho de vainilla húmedo, frosting de queso crema"]);
-const pastelNuevo4 = new pasteles("Torta Brownie", 4550, ["Brownie de chocolate con nueces, dulce de leche, crema de leche"]);
+const pastelNuevo1 = new pasteles("Larpeira", 5000, ["Bizcocho de vainilla", "crema pastelera"]);
+const pastelNuevo2 = new pasteles("Torta Oreo", 6000, ["Bizcocho de chocolate", "crema con oreos", "dulce de leche"]);
+const pastelNuevo3 = new pasteles("Pastel Red Velvet", 7500, ["Bizcocho de vainilla húmedo", "frosting de queso crema"]);
+const pastelNuevo4 = new pasteles("Torta Brownie", 4550, ["Brownie de chocolate con nueces", "dulce de leche", "crema de leche"]);
 productosALaVenta.push(pastelNuevo1);
 productosALaVenta.push(pastelNuevo2);
 productosALaVenta.push(pastelNuevo3);
