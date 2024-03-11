@@ -17,8 +17,6 @@ let botonesParaEliminar = document.querySelectorAll(".botonBorrarCarrito");
 const botonVaciar = document.querySelector("#vaciarCarrito");
 const elTotal = document.querySelector("#totalCompra");
 const confirmaCompra = document.querySelector("#comprarCarrito");
-const botonAgregarProducto = document.querySelectorAll(".botonAgregar");
-const botonRestarProducto = document.querySelectorAll(".botonRestar");
 
 //funciones del sistema del carrito:
 function losProductosCarrito() {
@@ -45,10 +43,6 @@ function losProductosCarrito() {
             </div>
             <div class="cantidadCarrito">
             <p><small>${producto.cantidad}</small></p>
-            <div class="col-md-6 d-flex botonesMasoMenos">
-            <button id="${producto.id}" class="sumarle1 botonAgregar">+</button>
-            <button id="${producto.id}" class="restarle1 botonRestar">-</button>
-            </div>
             </div>
             <div class="precioProductoCart">
             <p><small>Precio:</small></p>
