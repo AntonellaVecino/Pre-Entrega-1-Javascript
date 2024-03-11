@@ -8,167 +8,315 @@
 */
 
 //Declaro variables
-let email = "antonella@hotmail.com";
-let password = "1234";
-let ingreso = false;
 let cantidad;
-let carrito = [];
 let menu;
 const IVA = 1.21;
+const listaProd = document.querySelector("#listaTortas");
+let botonesAgregar = document.querySelectorAll(".botonAgregar");
+const numerito = document.querySelector("#numeroCart");
+const enviarAlHtml = document.querySelectorAll(".misProductos");
+let productosElegidosEnLS = localStorage.getItem("productosEnElCarrito");
+const barraBusqueda = document.querySelector("#formularioDeBusqueda");
+const botonBusqueda = document.querySelector(".botonBuscar");
+let productosElegidos = [];
 
-
-//Acá comienza la bienvenida, y el ingreso del usuario con password y email
-alert(
-  "🥮 Bienvenido/a a la tienda virtual de la Pastelería Delicias Galegas 🥮"
-);
-alert(
-  "Para acceder al Menú, ingresa a tu cuenta. Tendrás tres intentos. \n Una vez realizado el pedido, se enviará la información al mail ingresado."
-);
-for (let i = 2; i >= 0; i--) {
-  let ingresoMail = prompt("Ingresa tu mail");
-  let ingresoPass = prompt("Ingresa tu contraseña");
-  if (ingresoMail === email && ingresoPass === password) {
-    alert("Bienvenido/a");
-    ingreso = true;
-    break;
-  } else {
-    alert(
-      "Dirección de mail y/o contraseña incorrecta. Ingresa un mail y una contraseña válidas. Te quedan " +
-        i +
-        " intentos."
-    );
-  }
-}
-
-//Mi array de productos
+//Mi array de productos (la funcion constructora para pushear todos los nuevos productos me rompe el codigo no se porque )
 const productosALaVenta = [
-  {id: 1, nombre: "Tarta de Queso", precio: 3000, ingredientes: ["Queso crema", " Azucar", " Leche", " Huevos", " Esencia"]},
-  {id: 2, nombre: "Tarta de Santiago", precio: 1999.99, ingredientes: ["Bizcocho de vainilla", " almendras"]},
-  {id: 3, nombre: "Torta Matilda", precio: 3500, ingredientes: ["Bizcocho de chocolate", " ganache de chocolate"]},
-  {id: 4, nombre: "Torta de Frutilla", precio: 2590, ingredientes: ["Masa sablée de vainilla", " frutillas", " crema de leche"]}
+  {
+    id: "1",
+    nombre: "Tarta de Queso",
+    precio: 3000,
+    ingredientes: ["Queso crema", " Azucar", " Leche", " Huevos", " Esencia"],
+    img: "https://i.pinimg.com/736x/6b/c4/c5/6bc4c538e3c8ce6df3d86acfbae60316.jpg",
+  },
+  {
+    id: "2",
+    nombre: "Tarta de Santiago",
+    precio: 1999.99,
+    ingredientes: ["Bizcocho de vainilla", " almendras", " azucar glass"],
+    img: "https://cdn.pixabay.com/photo/2021/12/28/22/28/tarta-6900298_1280.jpg",
+  },
+  {
+    id: "3",
+    nombre: "Torta Matilda",
+    precio: 3500,
+    ingredientes: ["Bizcocho de chocolate", " ganache de chocolate"],
+    img: "https://cdn.pixabay.com/photo/2016/01/04/18/25/chocolate-1121356_640.jpg",
+  },
+  {
+    id: "4",
+    nombre: "Torta de Frutilla",
+    precio: 2590,
+    ingredientes: ["Masa sablée de vainilla", " frutillas", " crema de leche"],
+    img: "https://cdn.pixabay.com/photo/2018/02/08/18/19/strawberry-pie-3140004_640.jpg",
+  },
+  {
+    id: "5",
+    nombre: "Larpeira",
+    precio: 5000,
+    ingredientes: [
+      "Bizcocho de vainilla",
+      " crema pastelera",
+      " granas de azucar",
+    ],
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNCTelsJgv3VwBH3vjCiNyavcPBCLKAKA6QQ&usqp=CAU",
+  },
+  {
+    id: "6",
+    nombre: "Torta Brownie",
+    precio: 4550,
+    ingredientes: [
+      "Brownie de chocolate con nueces",
+      " dulce de leche",
+      " crema de leche",
+    ],
+    img: "data:image/jpeg;base64,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",
+  },
+  {
+    id: "7",
+    nombre: "Torta Oreo",
+    precio: 6000,
+    ingredientes: [
+      "Bizcocho de chocolate",
+      " crema con oreos",
+      " dulce de leche",
+    ],
+    img: "https://th.bing.com/th/id/OIG4.uewJtQAV4UJeYn0nY1Vf?w=270&h=270&c=6&r=0&o=5&pid=ImgGn",
+  },
+  {
+    id: "8",
+    nombre: "Tres Leches",
+    precio: 8000,
+    ingredientes: [
+      "Bizcocho de vainila",
+      " crema",
+      " leche",
+      " leche condensada",
+      " merengue",
+    ],
+    img: "https://th.bing.com/th/id/OIG4.tHXzVHEFsAT5T5SWyQqG?w=270&h=270&c=6&r=0&o=5&pid=ImgGn",
+  },
+  {
+    id: "9",
+    nombre: "Pastel Red Velvet",
+    precio: 7500,
+    ingredientes: ["Bizcocho de vainilla húmedo", " frosting de queso crema"],
+    img: "https://th.bing.com/th/id/OIG2.xWBQb9Tf1ZX8esVMKe_p?w=270&h=270&c=6&r=0&o=5&pid=ImgGn",
+  },
+  {
+    id: "10",
+    nombre: "Filloas Rellenas",
+    precio: 900,
+    ingredientes: [
+      "Panqueque de harina delgado",
+      " crema chantilly",
+      " frutas de estación",
+    ],
+    img: "https://www.esturirafi.com/wp-content/uploads/2015/02/filloas-integrales-768x512.jpg",
+  },
+  {
+    id: "11",
+    nombre: "Melindres",
+    precio: 1200,
+    ingredientes: ["Masa de vainilla", " glaseado de azucar y limón"],
+    img: "https://th.bing.com/th/id/OIG3.JErg7ge34_B5.MGu7kvg?w=270&h=270&c=6&r=0&o=5&pid=ImgGn",
+  },
+  {
+    id: "12",
+    nombre: "Orejas de Carnaval",
+    precio: 2000,
+    ingredientes: ["Masa de vainilla", " grasa", " azúcar", " canela"],
+    img: "https://tse2.mm.bing.net/th?id=OIP.cnww0FhNJ5SO36el-DBZYQHaE8&pid=Api&P=0&h=180",
+  },
+  {
+    id: "13",
+    nombre: "Tarta de Almendras",
+    precio: 1300,
+    ingredientes: ["Sableé de almendras", " crema de bellotas y almendras"],
+    img: "https://th.bing.com/th/id/OIG1.wNp8WEhMkn9JgvKE0WNw?w=270&h=270&c=6&r=0&o=5&pid=ImgGn",
+  },
+  {
+    id: "14",
+    nombre: "Bica Mantecada",
+    precio: 2500,
+    ingredientes: [
+      "Bizcocho esponjoso de vainilla",
+      " cobertura de mantequilla",
+    ],
+    img: "https://th.bing.com/th/id/OIG4.iQO8LyDsFgmkKt8hrCgB?w=270&h=270&c=6&r=0&o=5&pid=ImgGn",
+  },
+  {
+    id: "15",
+    nombre: "Caja de 12 Macarons",
+    precio: 3000,
+    ingredientes: [
+      "Tapitas de almendra",
+      " rellenos de chocolate, fresa, mango, café, matcha, frutos rojos",
+    ],
+    img: "https://cdn.pixabay.com/photo/2015/04/20/19/03/macarons-732021_640.jpg",
+  },
+  {
+    id: "16",
+    nombre: "Caja de 6 CupCakes",
+    precio: 2500,
+    ingredientes: ["Bizcocho de chocolate y vainilla", " frosting de vainilla"],
+    img: "https://cdn.pixabay.com/photo/2018/10/04/15/19/cupcake-3723832_640.jpg",
+  },
 ];
 
-//Declaro mis funciones:
-
-//Funcion que recorre el array de productos y se los muestra al cliente
-function mostrarProductos () {
-  let listaProductos = (`Nuestros productos Disponibles: \n`);
-productosALaVenta.forEach((producto) => {
-  listaProductos += `ID: ${producto.id}. Producto: ${producto.nombre}. Ingredientes: ${producto.ingredientes}. $${(producto.precio * IVA).toFixed(2)}\n \n`;
-});
-  alert(listaProductos);
-}
-
-//Funcion para agregar más productos a la lista: 
-let sumarId = productosALaVenta.length + 1;
-function pasteles(nombre, precio, ingredientes) {
+//Funcion para agregar más productos a la lista:
+/* let sumarId = productosALaVenta.length + 1;
+function pasteles(nombre, precio, ingredientes, img) {
   this.nombre = nombre;
   this.precio = precio;
   this.ingredientes = ingredientes;
   this.id = sumarId++;
-}
-
-//Funcion que permite al cliente elegir una cantidad mediante un prompt
-
-function elegirCantidad(cantidad) {
-  do {
-    cantidad = parseInt(prompt("¿Cuántas unidades deseas llevar?"));
-  } while (isNaN(cantidad) || cantidad < 1);
-  return cantidad;
-}
-
-//Función que recorre los productos que se han agregado en el carrito final y los suma.
-function mostrarCarrito() {
-  let carritoFinal = "Productos en el carrito: \n";
-  let total = 0;
-  carrito.forEach(function(producto) { 
-    carritoFinal +=`producto: ${producto.nombre}, unidades:  ${producto.cantidad} \n`;
-    total += (producto.precio * IVA) * producto.cantidad ;
-  })
-  carritoFinal += "Total de la Compra: " + total.toFixed(2);
-  alert(carritoFinal);
-    return carrito;
-}
+  this.img = img;
+} */
 
 //Creo nuevos productos para pushear al array (Esto es mas una prueba de f(x) que genera productos)
-const pastelNuevo1 = new pasteles("Larpeira", 5000, ["Bizcocho de vainilla", " crema pastelera"]);
-const pastelNuevo2 = new pasteles("Torta Oreo", 6000, ["Bizcocho de chocolate", " crema con oreos", " dulce de leche"]);
-const pastelNuevo3 = new pasteles("Pastel Red Velvet", 7500, ["Bizcocho de vainilla húmedo", " frosting de queso crema"]);
-const pastelNuevo4 = new pasteles("Torta Brownie", 4550, ["Brownie de chocolate con nueces", " dulce de leche", " crema de leche"]);
-productosALaVenta.push(pastelNuevo1);
-productosALaVenta.push(pastelNuevo2);
+/* const pastelNuevo1 = new pasteles("Larpeira", 5000, ["Bizcocho de vainilla", " crema pastelera", " granas de azucar"], "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNCTelsJgv3VwBH3vjCiNyavcPBCLKAKA6QQ&usqp=CAU"); */
+/* const pastelNuevo2 = new pasteles("Torta Oreo", 6000, ["Bizcocho de chocolate", " crema con oreos", " dulce de leche"], "https://cdn.pixabay.com/photo/2021/05/30/15/43/cake-6296207_640.jpg");
+const pastelNuevo3 = new pasteles("Tres Leches", 8000, ["Bizcocho de vainila", " crema", " leche", " leche condensada", " merengue"], "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStTYAn6cVCVdUtCnqDZTRHI-g4msZHjxun9A&usqp=CAU");
+const pastelNuevo4 = new pasteles("Pastel Red Velvet", 7500, ["Bizcocho de vainilla húmedo", " frosting de queso crema"], "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLU58srF2jFdzrbeNncPF7w9vbRDhCMnkBOA&usqp=CAU");
+const pastelNuevo5 = new pasteles("Torta Brownie", 4550, ["Brownie de chocolate con nueces", " dulce de leche", " crema de leche"], "data:image/jpeg;base64,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"); */
+/* productosALaVenta.push(pastelNuevo1); */
+/* productosALaVenta.push(pastelNuevo2);
 productosALaVenta.push(pastelNuevo3);
 productosALaVenta.push(pastelNuevo4);
+productosALaVenta.push(pastelNuevo5); */
 
-
-//Si el ingreso es true, ejecuto este código que muestra el menú de opciones.
-
-if(ingreso) {
-  do{
-    menu = parseInt(prompt("Accede a nuestros Productos, agrégalos a tu Carrito y Finaliza tu Compra: \n1- Productos \n2- Ver Carrito \n3- Finalizar Compra \n4- Eliminar producto del carrito \n5- Salir del Menú"));
-    switch (menu) {  
-      case 1: 
-      //Muestro los productos al cliente, y hago que elijan uno, y su cantidad respectiva. 
-        mostrarProductos();
-        let eleccionDelCliente = prompt("Ingresa la Id del producto que quieres adquirir, para sumarlo a tu carrito."); 
-        let productoElegido = productosALaVenta.find(producto => producto.id == eleccionDelCliente);
-        let cantidadElegida = elegirCantidad();
-        //Cuando el producto está elegido, igualo su cantidad a la cantidad que puso en el prompt para que se actualice en el carrito
-        if (productoElegido) {
-          productoElegido.cantidad = cantidadElegida;
-          carrito.push(productoElegido);
-          alert(`Se agregó al carrito: ${productoElegido.nombre}`);
-        } else {
-          alert("ID de producto no válido. Inténtalo de nuevo.");
-        }
-        break;
-      case 2:
-        //Acá simplemente muestro el carrito con el total y el id (por si se quiere sacar una cosa)
-        mostrarCarrito();
-        break;
-      case 3:
-        //Acá sumo todo lo del carrito y arrojo el total de la compra. 
-        let total = carrito.reduce((acumulador, producto) => acumulador + ((producto.precio * IVA) * producto.cantidad), 0);
-        alert(`Total de la compra: $${total.toFixed(2)}`);
-        if (total === 0) {
-          alert("Tu carrito está vacío! 🐀");
-        } else {
-        //Si el carrito no está vacio, pido los datos de la tarjeta
-        tarjeta = prompt("Ingresa los 10 digitos de tu tarjeta.");
-        if (tarjeta.length === 10) {
-          alert("Pago Exitoso");
-          alert("Muchas gracias por confiar en nosotros");
-          //Acá reinicio el carrito y el total, para poder hacer otro pedido de 0
-          carrito = [];
-          total = 0;
-          break;
-        } else {
-          alert("Error: Numero de tarjeta no válido");
-        }
-      }
-        break;
-      case 4: 
-      if (carrito.length === 0) { 
-        alert("Tu carrito está vacío! 🐀"); 
-        break; 
-      } 
-      //Acá le pido al cliente que ponga la id del producto que quiere sacar del carrito
-      let sacarId = parseInt(prompt("Ingresa el ID del producto que quieres sacar de tu carrito:")); 
-      //Busco esa id en el carrito. Y si no está, arroja que no hay un id correcto
-      let productoEliminado = carrito.find(producto => producto.id === sacarId); 
-      if (productoEliminado) { 
-        //acá hago que el carrito se actualice. El producto.id !== sacarId, asi lo puedo quitar del carrito.
-        carrito = carrito.filter(producto => producto.id !== sacarId); 
-        alert(`Se sacó ${productoEliminado.nombre} del carrito`); 
-      } else { alert("ID de producto no válido. Inténtalo de nuevo."); 
-    } break;
-      case 5:
-        alert("Saliendo del menu de productos");
-        ingreso = false;
-        break;
-      default:
-        alert("Opción no válida. Inténtalo de nuevo.");
-        break;
-    }
-  }while (ingreso);
+function losProductos(productos = productosALaVenta) {
+  productos.forEach((producto) => {
+    let li = document.createElement("li");
+    li.innerHTML = `
+      <div  class="card m-3">
+      <img src="${producto.img}" class="cardImg" alt="${producto.nombre}">
+      <h3 class="pt-3">${producto.nombre}</h3>
+      <p><small>Ingredientes: ${producto.ingredientes}</small></p>
+      <p><strong>$${(producto.precio * IVA).toFixed(2)}</strong></p>
+      <div class="botonera">
+      <button type="button" class="btn botones botonAgregar" id="${
+        producto.id
+      }"><strong>Agregar Al Carrito</strong></button>
+      </div>
+      </div>
+      `;
+    listaProd.append(li);
+  });
+  botonesAgregarFuncionales();
+  return listaProd;
 }
+//Envia al html
+
+for (let i = 0; i < enviarAlHtml.length; i++) {
+  enviarAlHtml[i].innerHTML = "";
+  enviarAlHtml[i].append(losProductos());
+}
+
+//funcionalidad a botones de compra:
+
+function botonesAgregarFuncionales() {
+  botonesAgregar = document.querySelectorAll(".botonAgregar");
+  botonesAgregar.forEach((boton) => {
+    boton.addEventListener("click", agregarAlCarrito);
+  });
+}
+
+//Funcion para poner los productos en el carrito:
+
+if (productosElegidosEnLS) {
+  productosElegidos = JSON.parse(productosElegidosEnLS);
+  actualizarNumerito();
+} else {
+  productosElegidos = [];
+}
+function agregarAlCarrito(e) {
+  const idDelBoton = e.currentTarget.id;
+  const productoAgregado = productosALaVenta.find(
+    (producto) => producto.id === idDelBoton
+  );
+
+  if (!Array.isArray(productosElegidos)) {
+    productosElegidos = [];
+  }
+
+  if (productosElegidos.some((producto) => producto.id === idDelBoton)) {
+    const indexProd = productosElegidos.findIndex(
+      (producto) => producto.id === idDelBoton
+    );
+    productosElegidos[indexProd].cantidad++;
+  } else {
+    productoAgregado.cantidad = 1;
+    productosElegidos.push(productoAgregado);
+  }
+  localStorage.setItem(
+    "productosEnElCarrito",
+    JSON.stringify(productosElegidos)
+  );
+  actualizarNumerito();
+}
+//Funcion para el numerito del carrito
+productosElegidos = localStorage.getItem(productosElegidos) || [];
+function actualizarNumerito() {
+  if (Array.isArray(productosElegidos)) {
+    let nuevoNumerito = productosElegidos.reduce(
+      (acc, producto) => acc + producto.cantidad,
+      0
+    );
+    numerito.innerText = nuevoNumerito;
+  } else {
+    console.error("productosElegidos no es un array");
+  }
+}
+
+//Vamos a fitrar los productos con la barra de busqueda:
+function filtrarTorta(productos, busqueda) {
+  const filtrado = productos.filter((el) => {
+    return el.nombre.toLowerCase().includes(busqueda.toLowerCase());
+  });
+
+  if (filtrado.length > 0) {
+    return filtrado[0];
+  } else {
+    return null;
+  }
+}
+
+// Barra de búsqueda
+
+botonBusqueda.addEventListener("click", () => {
+  const busqueda = barraBusqueda.value.toLowerCase();
+  const filtrado = productosALaVenta.filter((el) => {
+    return el.nombre.toLowerCase().includes(busqueda);
+  });
+  listaProd.innerHTML = "";
+  losProductos(filtrado);
+});
+
+//parte del slider de precios
+const preciosConIVA = productosALaVenta.map((producto) =>
+  Number((producto.precio * IVA).toFixed(2))
+);
+
+const minPrecio = Math.min(...preciosConIVA);
+const maxPrecio = Math.max(...preciosConIVA);
+
+const precioSlider = document.querySelector("#precioSlider");
+const precioValor = document.querySelector("#precioValor");
+
+precioSlider.min = minPrecio;
+precioSlider.max = maxPrecio + 1;
+precioSlider.value = minPrecio;
+precioValor.textContent = minPrecio;
+
+precioSlider.addEventListener("input", () => {
+  const precio = precioSlider.value;
+  precioValor.textContent = precio;
+
+  const filtrado = productosALaVenta.filter((producto) => {
+    return producto.precio * IVA <= precio;
+  });
+  listaProd.innerHTML = "";
+  losProductos(filtrado);
+});

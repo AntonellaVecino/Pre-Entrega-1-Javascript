@@ -1,403 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Deléitate con las especialidades de nuestra Pastelería Gallega.">
-    <meta name="keywords" content="pastelería, galicia, pasteles, cafetería, café galicia, croissant, tarta, dulce, salado">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Deléitate con las especialidades de nuestra Pastelería Gallega."
+    />
+    <meta
+      name="keywords"
+      content="pastelería, galicia, pasteles, cafetería, café galicia, croissant, tarta, dulce, salado"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
     <!-- animate y eos -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
     <!-- fin animate y wow -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="shortcut icon" href="./photos/logo/_abe4cc59-ce71-4f50-b86e-7b96d12760ae-removebg-preview.png">
-    <link rel="stylesheet" href="./styles/styles.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="shortcut icon"
+      href="./photos/logo/_abe4cc59-ce71-4f50-b86e-7b96d12760ae-removebg-preview.png"
+    />
+    <link rel="stylesheet" href="./styles/styles.css" />
     <title>Pastelería Delicias Galegas | Menú</title>
-</head>
-<body>
-<header>
-  <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="./index.html">
-        <img
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="./index.html">
+            <img
               id="logoPasteleria"
               src="./photos/logo/_abe4cc59-ce71-4f50-b86e-7b96d12760ae-removebg-preview.png"
               alt="Logo"
               draggable="false"
               height="100"
-          />
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon">
-          <i class="fa-solid fa-bars" style="color: #d51aa3;"></i>
-        </span>
-      </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item">
-            <a class="nav-link mx-2" href="index.html"><i class="fa-solid fa-stroopwafel pe-2 mx-2" style="color: #51461f;"></i></i>Tienda</a>
-          </li>
-          <li>
-          <div class="text-center d-flex justify-content-center botonRegister">
-            <button onclick="location.href='./pages/register.html'" type="button" class="btn">
-              <i class="fa-regular fa-user fa-lg pe-2" style="color: #000000;"></i>
-            </button>
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavbar"
+          >
+            <span class="navbar-toggler-icon">
+              <i class="fa-solid fa-bars" style="color: #d51aa3"></i>
+            </span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav mx-auto">
+              <div class="d-flex botonesParaUsuario justify-content-end">
+                <li class="nav-item plataformaCompras">
+                  <a class="miCarrito no-outline" href="./pages/carrito.html">
+                    <i class="bi bi-cart-plus"></i
+                    ><span id="numeroCart" class="numeroCart bg-white">0</span>
+                  </a>
+                </li>
+              </div>
+            </ul>
           </div>
-          </li>
-          <li class="nav-item plataformaCompras">
-            <a href="./pages/tienda.html"><i class="fa-solid fa-bag-shopping fa-lg pe-2 plataformaCompras" style="color: #000000;"></i></a>
-          </li>
-          <li class="nav-item whatsapp">
-            <a href="#">
-              <i class="fa-brands fa-whatsapp fa-lg pe-2" style="color: #000000;"></i>
-            </a>
-          </li>
-        </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <!-- presentacion -->
+      <div class="container-fluid">
+        <div class="mt-4 p-5 rounded jumbotron">
+          <div class="row">
+            <div class="col-md-12 text-center d-flex description p-5">
+              <h1>Tienda de la Pastelería "Delicias Gallegas"</h1>
+              <p>
+                <strong
+                  >Nuestra tradición Gallega, en las mejores dulzuras</strong
+                >
+              </p>
+              <p>
+                Prueba los mejores sabores de la gastronomía Gallega, rica en
+                cultura y diversidad de sabores.
+              </p>
+              <p>
+                <small>Elige tus productos en nuestra tienda on-line</small>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </nav>
-</header>
-<main>
-    <section class="section-products">
-		<div class="container">
-				<div class="row justify-content-center text-center">
-						<div class="col-md-8 col-lg-6 headerTienda">
-								<div class="">
-										<h3>Nuestra Tienda Virtual</h3>
-										<h2>Aquí encontrarás todos nuestros productos</h2>
-								</div>
-						</div>
-					</div>
+      <!-- fin presentacion -->
+      <section class="section-products">
+        <div class="container">
+          <div class="row justify-content-center text-center">
+            <div class="col-md-8 col-lg-6 headerTienda">
+              <div id="titulosPresentación">
+                <h3 id="titulo1">Nuestra Tienda Virtual</h3>
+                <h2 id="titulo2">Aquí encontrarás todos nuestros productos</h2>
+              </div>
+            </div>
+          </div>
           <div class="row justify-content-center text-center mb-5">
-							<div class="col-md-4 col-lg-6 justify-content-center align-items-center mb-3 mt-5">
-								<form class="d-flex">
-									<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-									<button class="btn btn-outline-success" type="submit">Search</button>
-								  </form>
-							</div>
-				</div>
-				<div class="row">
-						<!-- Single Product -->
-						<div class="col-md-6 col-lg-4 col-xl-3">
-								<div id="product-1" class="single-product">
-										<div class="part-1">
-												<ul>
-														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-														<li><a href="#"><i class="fas fa-heart"></i></a></li>
-												</ul>
-										</div>
-										<div class="part-2">
-												<h3 class="product-title">Filloas Rellenas (12 unidades)</h3>
-												<h4 class="product-old-price">€6.00</h4>
-												<h4 class="product-price">€3.40</h4>
-										</div>
-								</div>
-						</div>
-						<!-- Single Product -->
-						<div class="col-md-6 col-lg-4 col-xl-3">
-								<div id="product-2" class="single-product">
-										<div class="part-1">
-												<ul>
-														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-														<li><a href="#"><i class="fas fa-heart"></i></a></li>
-												</ul>
-										</div>
-										<div class="part-2">
-												<h3 class="product-title">Larpeira (Rinde 8 pc.)</h3>
-												<h4 class="product-price">€5.00</h4>
-										</div>
-								</div>
-						</div>
-						<!-- Single Product -->
-						<div class="col-md-6 col-lg-4 col-xl-3">
-								<div id="product-3" class="single-product">
-										<div class="part-1">
-												<ul>
-														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-														<li><a href="#"><i class="fas fa-heart"></i></a></li>
-												</ul>
-										</div>
-										<div class="part-2">
-												<h3 class="product-title">Bica Mantecada (rinde 8 pc.)</h3>
-												<h4 class="product-old-price">€15.00</h4>
-												<h4 class="product-price">$9.50</h4>
-										</div>
-								</div>
-						</div>
-						<!-- Single Product -->
-						<div class="col-md-6 col-lg-4 col-xl-3">
-								<div id="product-4" class="single-product">
-										<div class="part-1">
-												<span class="new">new</span>
-												<ul>
-														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-														<li><a href="#"><i class="fas fa-heart"></i></a></li>
-												</ul>
-										</div>
-										<div class="part-2">
-												<h3 class="product-title">Carrot Cake (rinde 8 pc.)</h3>
-												<h4 class="product-price">€20.00</h4>
-										</div>
-								</div>
-						</div>
-						<!-- Single Product -->
-						<div class="col-md-6 col-lg-4 col-xl-3">
-								<div id="product-5" class="single-product">
-										<div class="part-1">
-												<ul>
-														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-														<li><a href="#"><i class="fas fa-heart"></i></a></li>
-												</ul>
-										</div>
-										<div class="part-2">
-												<h3 class="product-title">Tarta de Almendras (rinde 8 tz.)</h3>
-												<h4 class="product-old-price">€25.00</h4>
-												<h4 class="product-price">€19.99</h4>
-										</div>
-								</div>
-						</div>
-						<!-- Single Product -->
-						<div class="col-md-6 col-lg-4 col-xl-3">
-								<div id="product-6" class="single-product">
-										<div class="part-1">
-												<span class="discount">15% off</span>
-												<ul>
-														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-														<li><a href="#"><i class="fas fa-heart"></i></a></li>
-												</ul>
-										</div>
-										<div class="part-2">
-												<h3 class="product-title">Tarta de Santiago (rinde 8 tz)</h3>
-												<h4 class="product-price">€20.00</h4>
-										</div>
-								</div>
-						</div>
-						<!-- Single Product -->
-						<div class="col-md-6 col-lg-4 col-xl-3">
-								<div id="product-7" class="single-product">
-										<div class="part-1">
-												<ul>
-														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-														<li><a href="#"><i class="fas fa-heart"></i></a></li>
-												</ul>
-										</div>
-										<div class="part-2">
-												<h3 class="product-title">CheeseCake Gallego (rinde 8 pc.)</h3>
-												<h4 class="product-old-price">$28.00</h4>
-												<h4 class="product-price">$20.00</h4>
-										</div>
-								</div>
-						</div>
-						<!-- Single Product -->
-						<div class="col-md-6 col-lg-4 col-xl-3">
-								<div id="product-8" class="single-product">
-										<div class="part-1">
-												<span class="discount">10% off</span>
-												<ul>
-														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-														<li><a href="#"><i class="fas fa-heart"></i></a></li>
-												</ul>
-										</div>
-										<div class="part-2">
-												<h3 class="product-title">Pastel de Matilda (rinde 8 pc.)</h3>
-												<h4 class="product-price">€40.00</h4>
-										</div>
-								</div>
-						</div>
-						<!-- Single Product -->
-						<div class="col-md-6 col-lg-4 col-xl-3">
-							<div id="product-9" class="single-product">
-									<div class="part-1">
-										<span class="new">new</span>
-											<ul>
-													<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-													<li><a href="#"><i class="fas fa-heart"></i></a></li>
-											</ul>
-									</div>
-									<div class="part-2">
-											<h3 class="product-title">Pastel Red Velvet (rinde 12 pc.)</h3>
-											<h4 class="product-price">$35.00</h4>
-									</div>
-							</div>
-					</div><!-- Single Product -->
-					<div class="col-md-6 col-lg-4 col-xl-3">
-							<div id="product-10" class="single-product">
-									<div class="part-1">
-											<ul>
-													<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-													<li><a href="#"><i class="fas fa-heart"></i></a></li>
-											</ul>
-									</div>
-									<div class="part-2">
-											<h3 class="product-title">Tarta Oreo (rinde 8 pc.)</h3>
-											<h4 class="product-price">$39.99</h4>
-									</div>
-							</div>
-					</div><!-- Single Product -->
-					<div class="col-md-6 col-lg-4 col-xl-3">
-							<div id="product-11" class="single-product">
-									<div class="part-1">
-										<span class="discount">10% off</span>
-											<ul>
-													<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-													<li><a href="#"><i class="fas fa-heart"></i></a></li>
-											</ul>
-									</div>
-									<div class="part-2">
-											<h3 class="product-title">Tarta Brownie (rinde 8 pc.)</h3>
-											<h4 class="product-old-price">$30.00</h4>
-											<h4 class="product-price">$27.00</h4>
-									</div>
-							</div>
-					</div><!-- Single Product -->
-					<div class="col-md-6 col-lg-4 col-xl-3">
-							<div id="product-12" class="single-product">
-									<div class="part-1">
-											<ul>
-													<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-													<li><a href="#"><i class="fas fa-heart"></i></a></li>
-											</ul>
-									</div>
-									<div class="part-2">
-											<h3 class="product-title">Milhojas de Frambuesa (rinde 8 pc.)</h3>
-											<h4 class="product-price">$20.00</h4>
-									</div>
-							</div>
-					</div>
-					<!-- Single Product -->
-					<div class="col-md-6 col-lg-4 col-xl-3">
-						<div id="product-13" class="single-product">
-								<div class="part-1">
-										<ul>
-												<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-												<li><a href="#"><i class="fas fa-heart"></i></a></li>
-										</ul>
-								</div>
-								<div class="part-2">
-										<h3 class="product-title">Palmeritas de Hojalde (caja de 500 gr.)</h3>
-										<h4 class="product-price">€8.50</h4>
-								</div>
-						</div>
-				</div>
-				<!-- Single Product -->
-				<div class="col-md-6 col-lg-4 col-xl-3">
-					<div id="product-14" class="single-product">
-							<div class="part-1">
-									<span class="discount">10% off</span>
-									<ul>
-											<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-											<li><a href="#"><i class="fas fa-heart"></i></a></li>
-									</ul>
-							</div>
-							<div class="part-2">
-									<h3 class="product-title">Pastas de Té (surtidas)</h3>
-									<h4 class="product-price">€15.00</h4>
-							</div>
-					</div>
-			</div>
-			<!-- Single Product -->
-			<div class="col-md-6 col-lg-4 col-xl-3">
-				<div id="product-15" class="single-product">
-						<div class="part-1">
-								<ul>
-										<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-										<li><a href="#"><i class="fas fa-heart"></i></a></li>
-								</ul>
-						</div>
-						<div class="part-2">
-								<h3 class="product-title">Donas Surtidas (caja de 12 unidades)</h3>
-								<h4 class="product-price">€24.00</h4>
-						</div>
-				</div>
-		</div>
-		<!-- Single Product -->
-		<div class="col-md-6 col-lg-4 col-xl-3">
-			<div id="product-16" class="single-product">
-					<div class="part-1">
-							<span class="new">new</span>
-							<ul>
-									<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-									<li><a href="#"><i class="fas fa-heart"></i></a></li>
-							</ul>
-					</div>
-					<div class="part-2">
-							<h3 class="product-title">Rollos de Canela (6 unidades)</h3>
-							<h4 class="product-price">€12.60</h4>
-					</div>
-			</div>
-	</div>
-				</div>
-		</div>
-</section>
-</main>
-<!-- inicia Footer -->   
-<section class="mt-5 elFooter">
-	<div class="d-flex container-fluid" lc-helper="background" style="min-height:40vh;background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR39bZcyE6Sp3Zoz1fdjga_-C0rCfzERptLs_tfeyaNlIKiNYDdYVYzBSqa8Z0EvPHSIuo&usqp=CAU); background-repeat:repeat-x;"></div>
-  <footer>
-	<div class="container py-5 footer" style="margin-top:-20vh">
-		<div class="row">
-			<div class="col-md-12 text-center text-dark">
-				<div class="lc-block">
-					<img alt="logo" class="img-fluid" src="./photos/logo/_abe4cc59-ce71-4f50-b86e-7b96d12760ae-removebg-preview.png" style="max-height:20vh">
-					<div class="lc-block ">
-						<div editable="rich">
-							<h2>Delicias Galegas</h2>
-						</div>
-					</div>
-					<!-- /lc-block -->
-				</div>
-				<!-- /lc-block -->
-				<div class="lc-block text-center">
-					<div editable="rich">
-						<p> Copyright © Antonella Vecino</p>
-					</div>
-				</div>
-				<!-- /lc-block -->
-			</div>
-			<!-- /col -->
-		</div>
-		<div class="row d-flex justify-content-center">
-			<div class="d-flex col-md-12 justify-content-center">
-				<div class="lc-block text-center text-dark py-5 mx-2">
-					<a class="text-decoration-none" href="https://www.facebook.com/">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="2em" height="2em" lc-helper="svg-icon" fill="currentColor">
-							<path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"></path>
-						</svg>
-					</a>
-				</div>
-				<div class="lc-block text-center text-dark py-5 mx-2">
-					<a class="text-decoration-none" href="https://www.pinterest.com/">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="2em" height="2em" lc-helper="svg-icon" fill="currentColor">
-							<path d="M448 80v352c0 26.5-21.5 48-48 48H154.4c9.8-16.4 22.4-40 27.4-59.3 3-11.5 15.3-58.4 15.3-58.4 8 15.3 31.4 28.2 56.3 28.2 74.1 0 127.4-68.1 127.4-152.7 0-81.1-66.2-141.8-151.4-141.8-106 0-162.2 71.1-162.2 148.6 0 36 19.2 80.8 49.8 95.1 4.7 2.2 7.1 1.2 8.2-3.3.8-3.4 5-20.1 6.8-27.8.6-2.5.3-4.6-1.7-7-10.1-12.3-18.3-34.9-18.3-56 0-54.2 41-106.6 110.9-106.6 60.3 0 102.6 41.1 102.6 99.9 0 66.4-33.5 112.4-77.2 112.4-24.1 0-42.1-19.9-36.4-44.4 6.9-29.2 20.3-60.7 20.3-81.8 0-53-75.5-45.7-75.5 25 0 21.7 7.3 36.5 7.3 36.5-31.4 132.8-36.1 134.5-29.6 192.6l2.2.8H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48z"></path>
-						</svg>
-					</a>
-				</div>
-				<div class="lc-block text-center text-dark py-5 mx-2">
-					<a class="text-decoration-none" href="https://www.linkedin.com/">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="2em" height="2em" lc-helper="svg-icon" fill="currentColor">
-							<path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path>
-						</svg>
-					</a>
-				</div>
-				<div class="lc-block text-center text-dark py-5 mx-2">
-					<a class="text-decoration-none" href="https://www.instagram.com/">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="2em" height="2em" lc-helper="svg-icon" fill="currentColor">
-							<path d="M224,202.66A53.34,53.34,0,1,0,277.36,256,53.38,53.38,0,0,0,224,202.66Zm124.71-41a54,54,0,0,0-30.41-30.41c-21-8.29-71-6.43-94.3-6.43s-73.25-1.93-94.31,6.43a54,54,0,0,0-30.41,30.41c-8.28,21-6.43,71.05-6.43,94.33S91,329.26,99.32,350.33a54,54,0,0,0,30.41,30.41c21,8.29,71,6.43,94.31,6.43s73.24,1.93,94.3-6.43a54,54,0,0,0,30.41-30.41c8.35-21,6.43-71.05,6.43-94.33S357.1,182.74,348.75,161.67ZM224,338a82,82,0,1,1,82-82A81.9,81.9,0,0,1,224,338Zm85.38-148.3a19.14,19.14,0,1,1,19.13-19.14A19.1,19.1,0,0,1,309.42,189.74ZM400,32H48A48,48,0,0,0,0,80V432a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V80A48,48,0,0,0,400,32ZM382.88,322c-1.29,25.63-7.14,48.34-25.85,67s-41.4,24.63-67,25.85c-26.41,1.49-105.59,1.49-132,0-25.63-1.29-48.26-7.15-67-25.85s-24.63-41.42-25.85-67c-1.49-26.42-1.49-105.61,0-132,1.29-25.63,7.07-48.34,25.85-67s41.47-24.56,67-25.78c26.41-1.49,105.59-1.49,132,0,25.63,1.29,48.33,7.15,67,25.85s24.63,41.42,25.85,67.05C384.37,216.44,384.37,295.56,382.88,322Z"></path>
-						</svg>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</footer>
-</section>
-<!-- fin Footer -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script>
-          AOS.init();
-        </script>
-		<script src="./js/main.js"></script>
-</body>
+            <div
+              class="col-md-4 col-lg-6 justify-content-center align-items-center mb-3 mt-5 formBusqueda d-flex"
+            >
+              <input
+                class="form-control me-2"
+                type="text"
+                placeholder="Buscar...."
+                id="formularioDeBusqueda"
+              />
+              <button class="btn btn-outline-success botonBuscar">
+                Buscar
+              </button>
+            </div>
+          </div>
+          <!-- filtros de busqueda -->
+          <div class="filtros">
+            <div class="row justify-content-center text-center mb-5">
+              <p class="text-center">
+                Precio: $<span id="precioValor">0</span>
+              </p>
+              <div
+                class="col-md-4 col-lg-6 justify-content-center align-items-center mb-3 d-flex"
+              >
+                <input
+                  type="range"
+                  value="0"
+                  class="slider"
+                  id="precioSlider"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- Inicio de los productos generados con js -->
+          <div class="misProductos"></div>
+          <div>
+            <ul id="listaTortas"></ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- inicia Footer -->
+    <section class="mt-5 elFooter">
+      <div
+        class="d-flex container-fluid"
+        lc-helper="background"
+        style="
+          min-height: 40vh;
+          background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR39bZcyE6Sp3Zoz1fdjga_-C0rCfzERptLs_tfeyaNlIKiNYDdYVYzBSqa8Z0EvPHSIuo&usqp=CAU);
+          background-repeat: repeat-x;
+        "
+      ></div>
+      <footer>
+        <div class="container py-5 footer" style="margin-top: -20vh">
+          <div class="row">
+            <div class="col-md-12 text-center text-dark">
+              <div class="lc-block">
+                <img
+                  alt="logo"
+                  class="img-fluid"
+                  src="./photos/logo/_abe4cc59-ce71-4f50-b86e-7b96d12760ae-removebg-preview.png"
+                  style="max-height: 20vh"
+                />
+                <div class="lc-block">
+                  <div editable="rich">
+                    <h2>Delicias Galegas</h2>
+                  </div>
+                </div>
+                <!-- /lc-block -->
+              </div>
+              <!-- /lc-block -->
+              <div class="lc-block text-center">
+                <div editable="rich">
+                  <p>Copyright © Antonella Vecino</p>
+                </div>
+              </div>
+              <!-- /lc-block -->
+            </div>
+            <!-- /col -->
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="d-flex col-md-12 justify-content-center">
+              <div class="lc-block text-center text-dark py-5 mx-2">
+                <a
+                  class="text-decoration-none"
+                  href="https://www.facebook.com/"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 448 512"
+                    width="2em"
+                    height="2em"
+                    lc-helper="svg-icon"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"
+                    ></path>
+                  </svg>
+                </a>
+              </div>
+              <div class="lc-block text-center text-dark py-5 mx-2">
+                <a
+                  class="text-decoration-none"
+                  href="https://www.pinterest.com/"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 448 512"
+                    width="2em"
+                    height="2em"
+                    lc-helper="svg-icon"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M448 80v352c0 26.5-21.5 48-48 48H154.4c9.8-16.4 22.4-40 27.4-59.3 3-11.5 15.3-58.4 15.3-58.4 8 15.3 31.4 28.2 56.3 28.2 74.1 0 127.4-68.1 127.4-152.7 0-81.1-66.2-141.8-151.4-141.8-106 0-162.2 71.1-162.2 148.6 0 36 19.2 80.8 49.8 95.1 4.7 2.2 7.1 1.2 8.2-3.3.8-3.4 5-20.1 6.8-27.8.6-2.5.3-4.6-1.7-7-10.1-12.3-18.3-34.9-18.3-56 0-54.2 41-106.6 110.9-106.6 60.3 0 102.6 41.1 102.6 99.9 0 66.4-33.5 112.4-77.2 112.4-24.1 0-42.1-19.9-36.4-44.4 6.9-29.2 20.3-60.7 20.3-81.8 0-53-75.5-45.7-75.5 25 0 21.7 7.3 36.5 7.3 36.5-31.4 132.8-36.1 134.5-29.6 192.6l2.2.8H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48z"
+                    ></path>
+                  </svg>
+                </a>
+              </div>
+              <div class="lc-block text-center text-dark py-5 mx-2">
+                <a
+                  class="text-decoration-none"
+                  href="https://www.linkedin.com/"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 448 512"
+                    width="2em"
+                    height="2em"
+                    lc-helper="svg-icon"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+                    ></path>
+                  </svg>
+                </a>
+              </div>
+              <div class="lc-block text-center text-dark py-5 mx-2">
+                <a
+                  class="text-decoration-none"
+                  href="https://www.instagram.com/"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 448 512"
+                    width="2em"
+                    height="2em"
+                    lc-helper="svg-icon"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M224,202.66A53.34,53.34,0,1,0,277.36,256,53.38,53.38,0,0,0,224,202.66Zm124.71-41a54,54,0,0,0-30.41-30.41c-21-8.29-71-6.43-94.3-6.43s-73.25-1.93-94.31,6.43a54,54,0,0,0-30.41,30.41c-8.28,21-6.43,71.05-6.43,94.33S91,329.26,99.32,350.33a54,54,0,0,0,30.41,30.41c21,8.29,71,6.43,94.31,6.43s73.24,1.93,94.3-6.43a54,54,0,0,0,30.41-30.41c8.35-21,6.43-71.05,6.43-94.33S357.1,182.74,348.75,161.67ZM224,338a82,82,0,1,1,82-82A81.9,81.9,0,0,1,224,338Zm85.38-148.3a19.14,19.14,0,1,1,19.13-19.14A19.1,19.1,0,0,1,309.42,189.74ZM400,32H48A48,48,0,0,0,0,80V432a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V80A48,48,0,0,0,400,32ZM382.88,322c-1.29,25.63-7.14,48.34-25.85,67s-41.4,24.63-67,25.85c-26.41,1.49-105.59,1.49-132,0-25.63-1.29-48.26-7.15-67-25.85s-24.63-41.42-25.85-67c-1.49-26.42-1.49-105.61,0-132,1.29-25.63,7.07-48.34,25.85-67s41.47-24.56,67-25.78c26.41-1.49,105.59-1.49,132,0,25.63,1.29,48.33,7.15,67,25.85s24.63,41.42,25.85,67.05C384.37,216.44,384.37,295.56,382.88,322Z"
+                    ></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </section>
+    <!-- fin Footer -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script src="./js/main.js"></script>
+  </body>
 </html>
