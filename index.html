@@ -41,6 +41,8 @@
       href="./photos/logo/_abe4cc59-ce71-4f50-b86e-7b96d12760ae-removebg-preview.png"
     />
     <link rel="stylesheet" href="./styles/styles.css" />
+    <!-- Toastify -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <title>Pastelería Delicias Galegas | Menú</title>
   </head>
   <body>
@@ -81,7 +83,7 @@
         </div>
       </nav>
     </header>
-    <main>
+    <main id="cuerpo">
       <!-- presentacion -->
       <div class="container-fluid">
         <div class="mt-4 p-5 rounded jumbotron">
@@ -154,6 +156,8 @@
           <div class="misProductos"></div>
           <div>
             <ul id="listaTortas"></ul>
+          </div>
+          <div id="contenedorProductos">
           </div>
         </div>
       </section>
@@ -290,6 +294,8 @@
     <script>
       AOS.init();
     </script>
+    <!-- Toastify -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="./js/main.js"></script>
   </body>
 </html>

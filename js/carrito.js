@@ -1,12 +1,10 @@
+let productosElegidos = localStorage.getItem("productosEnElCarrito");
+productosElegidos = JSON.parse(productosElegidos);
 //Constantes del formulario
 const nombreInput = document.querySelector("#nombrePagos");
 const telInput = document.querySelector("#telefono");
 const domicilioInput = document.querySelector("#domicilio");
 const formulario = document.querySelector(".formularioCompra");
-
-let productosElegidos = localStorage.getItem("productosEnElCarrito");
-//lo hice asi porque sino me da error, y no se me cambia el carrito.
-productosElegidos = JSON.parse(productosElegidos);
 const contenedorCarritoVacio = document.querySelector("#carritoVacio");
 const contenedorProductos = document.querySelector("#carritoConProductos");
 const contenedorAcciones = document.querySelector("#accionesDelCarrito");
@@ -59,6 +57,9 @@ function losProductosCarrito() {
             `;
       contenedorProductos.append(div);
     });
+    //Actualizo bonotes
+  botonesEliminarFuncionales();
+  actualizarElTotal();
   } else if (comprarCosas()) {
     //Aca vuelvo a poner todo a la normalidad---> ver si es si o si necesario
     contenedorCarritoVacio.classList.add("d-none");
@@ -72,9 +73,6 @@ function losProductosCarrito() {
     contenedorAcciones.classList.add("d-none");
     contenedorConfirmaCompra.classList.add("d-none");
   }
-  //Actualizo bonotes
-  botonesEliminarFuncionales();
-  actualizarElTotal();
 }
 //aparecen los produtos
 losProductosCarrito();
@@ -90,27 +88,67 @@ function botonesEliminarFuncionales() {
 //ELimino un producto del carrito apretando el tachito
 function sacarDelCarrito(e) {
   const idDelBoton = e.currentTarget.id;
-  /*     let productoBorrado = productosElegidos.find(producto => producto.id === idDelBoton); */
   const indexProd = productosElegidos.findIndex(
     (producto) => producto.id === idDelBoton
   );
+  swal({
+    title: "Seguro que quieres eliminar el producto?",
+    text: "Qué lástima, es tan rico....",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((loSaca) => {
+    if (loSaca) {
   productosElegidos.splice(indexProd, 1);
   losProductosCarrito();
   localStorage.setItem(
     "productosEnElCarrito",
     JSON.stringify(productosElegidos)
   );
+      swal("Lo sacaste del Carrito :C", {
+        icon: "success",
+      });
+    } else {
+      swal("No lo borraste :D");
+    }
+  });
 }
 
 //Borro todos los productos con el noton vaciar carrito:
 botonVaciar.addEventListener("click", vaciarElCarrito);
 function vaciarElCarrito() {
-  productosElegidos.length = 0;
-  localStorage.setItem(
+  swal({
+    title: "Seguro que quieres vaciar tu carrito?",
+    text: "Si lo haces, no podré alimentar al michi este mes...",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((loBorra) => {
+    if (loBorra) {
+      productosElegidos.length = 0;
+    localStorage.setItem(
     "productosEnElCarrito",
     JSON.stringify(productosElegidos)
   );
   losProductosCarrito();
+  Toastify({
+
+    text: "Vaciaste tu carrito",
+
+    gravity: "bottom",
+
+    duration: 3000
+    
+    }).showToast();
+      swal("Borraste el carrito. 😿", {
+        icon: "success",
+      });
+    } else {
+      swal("¡Muchas Gracias!");
+    }
+  });
 }
 //Se actualiza el total
 function actualizarElTotal() {
@@ -136,6 +174,8 @@ function comprarCosas() {
   mensajeInformacion();
 }
 
+
+
 //Esto es un experimento que saque del internet para que se habilite el boton de comprar solo si se sube el formulario
 formulario.addEventListener("submit", () => {
   if (nombreInput.value && telInput.value && domicilioInput.value) {
@@ -153,15 +193,9 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       // Verifica que los elementos existan antes de acceder a sus valores que guarde en el session storagr
       if (nombreInput && telInput && domicilioInput) {
-        sessionStorage.setItem(
-          "nombreUsuario",
-          JSON.stringify(nombreInput.value)
-        );
-        sessionStorage.setItem("telUsuario", JSON.stringify(telInput.value));
-        sessionStorage.setItem(
-          "domicilioUsuario",
-          JSON.stringify(domicilioInput.value)
-        );
+        localStorage.setItem("nombreUsuario", nombreInput.value);
+                localStorage.setItem("telUsuario", telInput.value);
+                localStorage.setItem("domicilioUsuario", domicilioInput.value);
         formulario.reset();
         mensajeInformacion();
       }
@@ -173,6 +207,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //Da el mensaje al confirmar la compra
 function mensajeInformacion() {
+  Toastify({
+    text: "Cargando datos...",
+    duration: 2000,
+    close: true,
+    gravity: "top",
+    position: "center",
+    backgroundColor: "#4fbe87",
+  }).showToast();
   if (contenedorConfirmaCompra && nombreInput && telInput && domicilioInput) {
     let mensajeInfo = document.createElement("div");
     mensajeInfo.innerHTML = `<div class="container mensajeInfo pt-3 bg-gradient">

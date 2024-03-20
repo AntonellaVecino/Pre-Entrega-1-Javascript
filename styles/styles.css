@@ -186,14 +186,15 @@ ul {
   list-style: none;
   justify-content: center;
   text-align: center;
-  column-gap: 20px;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
   row-gap: 10px;
 }
 
-.misProductos {
+#listaTortas {
   display: flex;
 }
-.misProductos .card {
+#listaTortas .card {
   margin-top: 10px;
   padding: 5px;
   width: 400px;
@@ -204,32 +205,33 @@ ul {
   background-color: pink;
   box-shadow: 0px 0px 10px black;
 }
-.misProductos .card strong {
+#listaTortas .card strong {
   font-size: 20px;
 }
-.misProductos .card #seleccionCantidad {
+#listaTortas .card #seleccionCantidad {
   width: 40px;
   text-align: center;
   align-content: center;
   margin-bottom: 10px;
 }
-.misProductos .card .cardImg {
+#listaTortas .card .cardImg {
   background-size: cover;
   height: 300px;
   border: 3px rgb(232, 105, 126);
 }
-.misProductos .card .botones {
+#listaTortas .card .botones {
   padding: 5px;
   background-color: rgba(0, 255, 255, 0.419);
   border: 1px solid black;
   color: rgb(0, 0, 0);
 }
-.misProductos .card .botonera {
+#listaTortas .card .botonera {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  column-gap: 20px;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
 }
 
 .carritoDeCompras {
@@ -249,7 +251,8 @@ ul {
 }
 .mostrarElCarrito box .botonesParaConfirmar {
   justify-content: center;
-  column-gap: 10px;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
 }
 
 .animate__animated {
@@ -262,7 +265,8 @@ ul {
 }
 
 .contenedorDelForm {
-  column-gap: 135px;
+  -moz-column-gap: 135px;
+       column-gap: 135px;
   height: 900px;
   flex-wrap: nowrap;
   text-align: center;
@@ -316,7 +320,8 @@ ul {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  column-gap: 30px;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
 }
 .accionesDelCarrito p {
   font-size: larger;
@@ -332,7 +337,8 @@ ul {
 
 .productoEnCarrito {
   flex-direction: row;
-  column-gap: 20px;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
 }
 .productoEnCarrito .imagenProducto {
   width: 150px;
@@ -346,6 +352,4 @@ ul {
 
 .mensajeInfo {
   background-color: #fbbbf8;
-}
-
-/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=styles.css.map */

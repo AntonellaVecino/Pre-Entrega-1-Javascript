@@ -7,7 +7,22 @@
 5) Dar mensaje de agradecimiento al finalizar una compra.
 */
 
+
+//Hago fetch
+let productosALaVenta = [];
+
+const infoFetch= async(url)=>{
+  const respuesta = await fetch(url);
+  const productos = await respuesta.json();
+  console.log(productos);
+ }
+
+
+ let URL_JSON = infoFetch("./parteJson/db.json");
+
+
 //Declaro variables
+let productosElegidos;
 let cantidad;
 let menu;
 const IVA = 1.21;
@@ -18,10 +33,10 @@ const enviarAlHtml = document.querySelectorAll(".misProductos");
 let productosElegidosEnLS = localStorage.getItem("productosEnElCarrito");
 const barraBusqueda = document.querySelector("#formularioDeBusqueda");
 const botonBusqueda = document.querySelector(".botonBuscar");
-let productosElegidos = [];
+/* let productosElegidos = []; */
 
 //Mi array de productos (la funcion constructora para pushear todos los nuevos productos me rompe el codigo no se porque )
-const productosALaVenta = [
+/*const  productosALaVenta = [
   {
     id: "1",
     nombre: "Tarta de Queso",
@@ -162,7 +177,7 @@ const productosALaVenta = [
     ingredientes: ["Bizcocho de chocolate y vainilla", " frosting de vainilla"],
     img: "https://cdn.pixabay.com/photo/2018/10/04/15/19/cupcake-3723832_640.jpg",
   },
-];
+]; */
 
 //Funcion para agregar más productos a la lista:
 /* let sumarId = productosALaVenta.length + 1;
@@ -186,35 +201,58 @@ productosALaVenta.push(pastelNuevo3);
 productosALaVenta.push(pastelNuevo4);
 productosALaVenta.push(pastelNuevo5); */
 
-function losProductos(productos = productosALaVenta) {
+
+async function losProductos() {
+  let productos = await pedirProductos(productosALaVenta);
+  const contenedorProductos = document.createElement('ul');
+  
   productos.forEach((producto) => {
+    let { img, nombre, precio, id, ingredientes } = producto;
     let li = document.createElement("li");
     li.innerHTML = `
       <div  class="card m-3">
-      <img src="${producto.img}" class="cardImg" alt="${producto.nombre}">
-      <h3 class="pt-3">${producto.nombre}</h3>
-      <p><small>Ingredientes: ${producto.ingredientes}</small></p>
-      <p><strong>$${(producto.precio * IVA).toFixed(2)}</strong></p>
+      <img src="${img}" class="cardImg" alt="${producto.nombre}">
+      <h3 class="pt-3">${nombre}</h3>
+      <p><small>Ingredientes: ${ingredientes}</small></p>
+      <p><strong>$${(precio * IVA).toFixed(2)}</strong></p>
       <div class="botonera">
-      <button type="button" class="btn botones botonAgregar" id="${
-        producto.id
-      }"><strong>Agregar Al Carrito</strong></button>
+      <button type="button" class="btn botones botonAgregar" id="${id}"><strong>Agregar Al Carrito</strong></button>
       </div>
       </div>
       `;
-    listaProd.append(li);
+      contenedorProductos.append(li);
   });
-  botonesAgregarFuncionales();
-  return listaProd;
+  
+  return contenedorProductos;
 }
+
 //Envia al html
 
-for (let i = 0; i < enviarAlHtml.length; i++) {
+/* for (let i = 0; i < enviarAlHtml.length; i++) {
   enviarAlHtml[i].innerHTML = "";
   enviarAlHtml[i].append(losProductos());
-}
+} */
 
-//funcionalidad a botones de compra:
+const pedirProductos = (arr) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (arr) {
+        resolve(productosALaVenta); // Cambia 'arr' por 'productosALaVenta'
+      } else {
+        reject("ERROR");
+      }
+    }, 1500);
+  });
+};
+
+let productosMostrar = [];
+losProductos().then((respuesta) => {
+  listaProd.innerHTML = "";
+  listaProd.append(respuesta);
+});
+
+
+ //funcionalidad a botones de compra:
 
 function botonesAgregarFuncionales() {
   botonesAgregar = document.querySelectorAll(".botonAgregar");
@@ -225,13 +263,15 @@ function botonesAgregarFuncionales() {
 
 //Funcion para poner los productos en el carrito:
 
+
+
 if (productosElegidosEnLS) {
   productosElegidos = JSON.parse(productosElegidosEnLS);
   actualizarNumerito();
 } else {
   productosElegidos = [];
 }
-function agregarAlCarrito(e) {
+/* function agregarAlCarrito(e) {
   const idDelBoton = e.currentTarget.id;
   const productoAgregado = productosALaVenta.find(
     (producto) => producto.id === idDelBoton
@@ -255,7 +295,54 @@ function agregarAlCarrito(e) {
     JSON.stringify(productosElegidos)
   );
   actualizarNumerito();
+  Toastify({
+
+    text: "Producto agregado al carrito",
+
+    gravity: "bottom",
+
+    duration: 3000
+    
+    }).showToast();
+} */
+
+
+function agregarAlCarrito(e) {
+
+  Toastify({
+
+    text: "Producto agregado al carrito",
+
+    gravity: "bottom",
+
+    duration: 3000
+    
+    }).showToast();
+
+    const idDelBoton = e.currentTarget.id;
+    const productoAgregado = productosALaVenta.find(
+      (producto) => producto.id === idDelBoton
+    );
+
+    if (productosElegidos.some(producto => producto.id === idDelBoton)) {
+      const indexProd = productosElegidos.findIndex(
+        producto => producto.id === idDelBoton
+      );
+      productosElegidos[indexProd].cantidad++;
+    } else {
+      productoAgregado.cantidad = 1;
+      productosElegidos.push(productoAgregado);
+    }
+    actualizarNumerito();
+    localStorage.setItem(
+      "productosEnElCarrito",
+      JSON.stringify(productosElegidos)
+    );
+    productosElegidos = productoPasado();
 }
+
+
+
 //Funcion para el numerito del carrito
 productosElegidos = localStorage.getItem(productosElegidos) || [];
 function actualizarNumerito() {
@@ -277,7 +364,7 @@ function filtrarTorta(productos, busqueda) {
   });
 
   if (filtrado.length > 0) {
-    return filtrado[0];
+    return filtrado;
   } else {
     return null;
   }
@@ -287,11 +374,11 @@ function filtrarTorta(productos, busqueda) {
 
 botonBusqueda.addEventListener("click", () => {
   const busqueda = barraBusqueda.value.toLowerCase();
-  const filtrado = productosALaVenta.filter((el) => {
-    return el.nombre.toLowerCase().includes(busqueda);
-  });
-  listaProd.innerHTML = "";
-  losProductos(filtrado);
+  const filtrado = filtrarTorta(productosALaVenta, busqueda);
+  listaProd.innerHTML = ""; 
+  const productosFiltradosHTML = losProductos(filtrado);
+  listaProd.appendChild(productosFiltradosHTML); 
+  botonesAgregarFuncionales();
 });
 
 //parte del slider de precios
@@ -317,6 +404,55 @@ precioSlider.addEventListener("input", () => {
   const filtrado = productosALaVenta.filter((producto) => {
     return producto.precio * IVA <= precio;
   });
-  listaProd.innerHTML = "";
-  losProductos(filtrado);
+  listaProd.innerHTML = ""; 
+  const productosFiltradosHTML = losProductos(filtrado);
+  listaProd.appendChild(productosFiltradosHTML); 
+  botonesAgregarFuncionales();
 });
+
+
+
+//Esto es para que el carrito no se me resetee al agregar cosas.
+function productoPasado() {
+
+  const productosElegidosEnLS = obtener()
+
+  if (productosElegidosEnLS) {
+
+    productosElegidos = productosElegidosEnLS;
+
+    actualizarNumerito();
+
+    return productosElegidos
+
+  } else {
+
+    return productosElegidos = [];
+
+  }
+
+}
+
+productoPasado()
+
+
+function obtener() {
+
+  let productosElegidosEnLS = JSON.parse(localStorage.getItem("productosEnElCarrito")) || false;
+  
+  return productosElegidosEnLS
+  
+  }
+
+
+
+  /* fetch("./parteJson/db.json")
+  .then((res) => res.json())
+  .then((data) => {
+    const { productosALaVenta } = data;
+    console.log(data);
+    console.log(productosALaVenta);
+    losProductos(productosALaVenta);
+    /* return productosALaVenta; */
+ /*  });  */
+
