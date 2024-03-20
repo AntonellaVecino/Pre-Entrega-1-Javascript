@@ -1,5 +1,5 @@
-{
-    "productosALaVenta": [
+
+  [
       {
         "id": "1",
         "nombre": "Tarta de Queso",
@@ -175,4 +175,3 @@
         "img": "https://cdn.pixabay.com/photo/2018/10/04/15/19/cupcake-3723832_640.jpg"
       }
     ]
-  }

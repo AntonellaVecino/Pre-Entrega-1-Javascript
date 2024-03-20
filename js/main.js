@@ -10,16 +10,35 @@
 
 //Hago fetch
 let productosALaVenta = [];
+fetch("./parteJson/db.json")
+  .then(res => res.json())
+  .then(data => {
+    productosALaVenta = data
+    mostrarCards(productosALaVenta);
+    }); 
 
-const infoFetch= async(url)=>{
+   /*  async function obtenerProductos() {
+      try {
+          const response = await fetch("./parteJson/db.json");
+          const data = await response.json();
+          productosALaVenta = data;
+          mostrarCards(productosALaVenta);
+      } catch (error) {
+          console.error('Error al obtener los productos:', error);
+      }
+  } */
+  
+/*   obtenerProductos(); */
+
+/* const infoFetch= async(url)=>{
   const respuesta = await fetch(url);
-  const productos = await respuesta.json();
-  console.log(productos);
+   productosALaVenta = await respuesta.json();
+  console.log(productosALaVenta);
  }
 
 
- let URL_JSON = infoFetch("./parteJson/db.json");
-
+ let URL_JSON = "./parteJson/db.json";
+ */
 
 //Declaro variables
 let productosElegidos;
@@ -202,16 +221,16 @@ productosALaVenta.push(pastelNuevo4);
 productosALaVenta.push(pastelNuevo5); */
 
 
-async function losProductos() {
-  let productos = await pedirProductos(productosALaVenta);
-  const contenedorProductos = document.createElement('ul');
+ function losProductos() {
+  let productos = productosALaVenta;
+  /* const contenedorProductos = document.createElement('ul'); */
   
   productos.forEach((producto) => {
     let { img, nombre, precio, id, ingredientes } = producto;
     let li = document.createElement("li");
     li.innerHTML = `
       <div  class="card m-3">
-      <img src="${img}" class="cardImg" alt="${producto.nombre}">
+      <img src="${img}" class="cardImg" alt="${nombre}">
       <h3 class="pt-3">${nombre}</h3>
       <p><small>Ingredientes: ${ingredientes}</small></p>
       <p><strong>$${(precio * IVA).toFixed(2)}</strong></p>
@@ -220,38 +239,70 @@ async function losProductos() {
       </div>
       </div>
       `;
-      contenedorProductos.append(li);
+      botonesAgregarFuncionales();
+      listaProd.append(li);
   });
   
-  return contenedorProductos;
+  return listaProd;
 }
 
 //Envia al html
-
-/* for (let i = 0; i < enviarAlHtml.length; i++) {
+async function mostrarCards(){
+for (let i = 0; i < enviarAlHtml.length; i++) {
   enviarAlHtml[i].innerHTML = "";
   enviarAlHtml[i].append(losProductos());
-} */
+}
+}
 
+/* async function mostrarCards() {
 const pedirProductos = (arr) => {
-  return new Promise((resolve, reject) => {
+
+  listaProd.innerHTML = "Cargando...";
+
+  return new Promise ((resolve, reject) => {
+
     setTimeout(() => {
-      if (arr) {
-        resolve(productosALaVenta); // Cambia 'arr' por 'productosALaVenta'
-      } else {
-        reject("ERROR");
+
+      if(arr){
+
+        resolve(arr);
+
+      }else{
+
+        reject("ERROR")
+
       }
-    }, 1500);
-  });
-};
+
+    }, 1500)
+
+  })
+
+}
 
 let productosMostrar = [];
-losProductos().then((respuesta) => {
-  listaProd.innerHTML = "";
-  listaProd.append(respuesta);
-});
 
+pedirProductos(productosALaVenta)
 
+  .then((respuesta) => {
+
+    productosMostrar = respuesta;
+
+    const productosHTML = losProductos(productosMostrar);
+
+   listaProd.innerHTML = "";
+
+   listaProd.appendChild(productosHTML);
+
+    botonesAgregarFuncionales();
+
+  })
+
+  .catch(error => {
+
+    listaProd.innerHTML = error;
+
+  });
+} */
  //funcionalidad a botones de compra:
 
 function botonesAgregarFuncionales() {
@@ -358,8 +409,8 @@ function actualizarNumerito() {
 }
 
 //Vamos a fitrar los productos con la barra de busqueda:
-function filtrarTorta(productos, busqueda) {
-  const filtrado = productos.filter((el) => {
+function filtrarTorta(productosALaVenta, busqueda) {
+  const filtrado = productosALaVenta.filter((el) => {
     return el.nombre.toLowerCase().includes(busqueda.toLowerCase());
   });
 
@@ -372,12 +423,13 @@ function filtrarTorta(productos, busqueda) {
 
 // Barra de búsqueda
 
-botonBusqueda.addEventListener("click", () => {
+botonBusqueda.addEventListener("click", async () => {
   const busqueda = barraBusqueda.value.toLowerCase();
-  const filtrado = filtrarTorta(productosALaVenta, busqueda);
+  const productos = await obtenerProductos(); // Espera a que se resuelva la promesa
+  const filtrado = filtrarTorta(productos, busqueda);
   listaProd.innerHTML = ""; 
-  const productosFiltradosHTML = losProductos(filtrado);
-  listaProd.appendChild(productosFiltradosHTML); 
+  const productosFiltradosHTML = mostrarCards(filtrado);
+  listaProd.innerHTML = productosFiltradosHTML; 
   botonesAgregarFuncionales();
 });
 
@@ -397,16 +449,18 @@ precioSlider.max = maxPrecio + 1;
 precioSlider.value = minPrecio;
 precioValor.textContent = minPrecio;
 
-precioSlider.addEventListener("input", () => {
+precioSlider.addEventListener("input", async () => {
   const precio = precioSlider.value;
   precioValor.textContent = precio;
-
-  const filtrado = productosALaVenta.filter((producto) => {
+  
+  const productos = await obtenerProductos(); // Espera a que se resuelva la promesa
+  
+  const filtrado = productos.filter((producto) => {
     return producto.precio * IVA <= precio;
   });
   listaProd.innerHTML = ""; 
-  const productosFiltradosHTML = losProductos(filtrado);
-  listaProd.appendChild(productosFiltradosHTML); 
+  const productosFiltradosHTML = mostrarCards(filtrado);
+  listaProd.innerHTML = productosFiltradosHTML; 
   botonesAgregarFuncionales();
 });
 
@@ -453,6 +507,6 @@ function obtener() {
     console.log(data);
     console.log(productosALaVenta);
     losProductos(productosALaVenta);
-    /* return productosALaVenta; */
- /*  });  */
+    return productosALaVenta;
+    });  */
 
