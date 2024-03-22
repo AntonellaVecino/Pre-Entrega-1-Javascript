@@ -58,8 +58,8 @@ function losProductosCarrito() {
       contenedorProductos.append(div);
     });
     //Actualizo bonotes
-  botonesEliminarFuncionales();
-  actualizarElTotal();
+    botonesEliminarFuncionales();
+    actualizarElTotal();
   } else if (comprarCosas()) {
     //Aca vuelvo a poner todo a la normalidad
     contenedorCarritoVacio.classList.add("d-none");
@@ -97,15 +97,14 @@ function sacarDelCarrito(e) {
     icon: "warning",
     buttons: true,
     dangerMode: true,
-  })
-  .then((loSaca) => {
+  }).then((loSaca) => {
     if (loSaca) {
-  productosElegidos.splice(indexProd, 1);
-  losProductosCarrito();
-  localStorage.setItem(
-    "productosEnElCarrito",
-    JSON.stringify(productosElegidos)
-  );
+      productosElegidos.splice(indexProd, 1);
+      losProductosCarrito();
+      localStorage.setItem(
+        "productosEnElCarrito",
+        JSON.stringify(productosElegidos)
+      );
       swal("Lo sacaste del Carrito :C", {
         icon: "success",
       });
@@ -120,28 +119,28 @@ botonVaciar.addEventListener("click", vaciarElCarrito);
 function vaciarElCarrito() {
   swal({
     title: "Seguro que quieres vaciar tu carrito?",
-    text: `Estás eliminando ${productosElegidos.reduce((total, producto) => total + producto.cantidad, 0)} productos`,
+    text: `Estás eliminando ${productosElegidos.reduce(
+      (total, producto) => total + producto.cantidad,
+      0
+    )} productos`,
     icon: "warning",
     buttons: true,
     dangerMode: true,
-  })
-  .then((loBorra) => {
+  }).then((loBorra) => {
     if (loBorra) {
       productosElegidos.length = 0;
-    localStorage.setItem(
-    "productosEnElCarrito",
-    JSON.stringify(productosElegidos)
-  );
-  losProductosCarrito();
-  Toastify({
+      localStorage.setItem(
+        "productosEnElCarrito",
+        JSON.stringify(productosElegidos)
+      );
+      losProductosCarrito();
+      Toastify({
+        text: "Vaciaste tu carrito",
 
-    text: "Vaciaste tu carrito",
+        gravity: "bottom",
 
-    gravity: "bottom",
-
-    duration: 3000
-    
-    }).showToast();
+        duration: 3000,
+      }).showToast();
       swal("Borraste el carrito. 😿", {
         icon: "success",
       });
@@ -174,8 +173,6 @@ function comprarCosas() {
   mensajeInformacion();
 }
 
-
-
 //Esto es un experimento que saque del internet para que se habilite el boton de comprar solo si se sube el formulario
 formulario.addEventListener("submit", () => {
   if (nombreInput.value && telInput.value && domicilioInput.value) {
@@ -194,8 +191,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // veo que los elementos existan antes de acceder a sus valores que guarde en el session storagr
       if (nombreInput && telInput && domicilioInput) {
         localStorage.setItem("nombreUsuario", nombreInput.value);
-                localStorage.setItem("telUsuario", telInput.value);
-                localStorage.setItem("domicilioUsuario", domicilioInput.value);
+        localStorage.setItem("telUsuario", telInput.value);
+        localStorage.setItem("domicilioUsuario", domicilioInput.value);
         formulario.reset();
         mensajeInformacion();
       }

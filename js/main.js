@@ -1,11 +1,11 @@
-//Actividad para la pre entrega: Hago un algoritmo mas complejo
-/*
-1) Hago una bienvenida, y un log in con el mail y la password
-2) Creo un menú con algunas opciones de productos, un carrito donde pueda sacar cosas, y para finalizar la compra
-3) Hacer que sea posible elegir entre varias opciones, y varias veces un producto, repitiendo el bucle las veces que necesite el usuario
-4) Al confirmar pedido, poner para pagar con tarjeta de debito. Que pongan un dato numerico y, si es de 10 caracteres, confirmar pedido.
-5) Dar mensaje de agradecimiento al finalizar una compra.
-*/
+//Consigna para la Entrega:
+//1)Permitir al usuario agregar cosas al carrito
+//2)Permitir que busque productos con filtro de precio o nombre.
+//3)Hago que el usuario ingrese sus datos para confirmar su compra.
+//4)El usuario puede borrrar un tipo de producto, o todo su carrito.
+//5)Doy mensaje de despedida al confirmar la compra.
+
+
 //Declaro variables
 let productosElegidos;
 let cantidad;
@@ -28,35 +28,29 @@ fetch("./parteJson/db.json")
     configurarSlider(data);
   });
 
-  function configurarSlider(productos) {
-    //parte del slider de precios
-    const preciosConIVA = productos.map((producto) => {
-      return Number((producto.precio * IVA).toFixed(2));
-    });
-    const minPrecio = Math.min(...preciosConIVA);
-    const maxPrecio = Math.max(...preciosConIVA);
-    precioSlider.min = minPrecio;
-    precioSlider.max = maxPrecio + 1;
-    precioSlider.value = minPrecio;
-    precioValor.textContent = minPrecio;
+//Funcionalidad del slider de precios
+function configurarSlider(productos) {
+  const preciosConIVA = productos.map((producto) => {
+    return Number((producto.precio * IVA).toFixed(2));
+  });
+  const minPrecio = Math.min(...preciosConIVA);
+  const maxPrecio = Math.max(...preciosConIVA);
+  precioSlider.min = minPrecio;
+  precioSlider.max = maxPrecio + 1;
+  precioSlider.value = minPrecio;
+  precioValor.textContent = minPrecio;
+}
+async function obtenerProductos() {
+  try {
+    const response = await fetch("./parteJson/db.json");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error al obtener los productos:", error);
   }
-  async function obtenerProductos() {
-    try {
-      const response = await fetch("./parteJson/db.json");
-      const data = await response.json();
-      return data;
+}
 
-    } catch (error) {
-      console.error("Error al obtener los productos:", error);
-    }
-  }
-  
-
-
-
-
-
-//Envia al html
+//Envia las cards al html
 function mostrarCards(productos) {
   listaProd.innerHTML = "";
   productos.forEach((producto) => {
@@ -78,9 +72,9 @@ function mostrarCards(productos) {
   });
 }
 
- //funcionalidad a botones de compra:
+//funcionalidad a botones de compra:
 
- function botonesAgregarFuncionales() {
+function botonesAgregarFuncionales() {
   botonesAgregar = document.querySelectorAll(".botonAgregar");
   botonesAgregar.forEach((boton) => {
     boton.addEventListener("click", agregarAlCarrito);
@@ -93,22 +87,23 @@ async function agregarAlCarrito(e) {
   Toastify({
     text: "Producto agregado al carrito",
     gravity: "bottom",
-    duration: 3000
+    duration: 3000,
   }).showToast();
 
   const idDelBoton = e.currentTarget.id;
-  
+  //pruebo uso de try para agregar productos al carrito
   try {
-    // Obtener los productos
     const productos = await obtenerProductos();
-
-    // Encontrar el producto por su ID
-    const productoAgregado = productos.find(producto => producto.id === idDelBoton);
+    const productoAgregado = productos.find(
+      (producto) => producto.id === idDelBoton
+    );
 
     if (!productoAgregado) {
       throw new Error("Producto no encontrado");
     }
-    const productoExistente = productosElegidos.find(producto => producto.id === idDelBoton);
+    const productoExistente = productosElegidos.find(
+      (producto) => producto.id === idDelBoton
+    );
 
     if (productoExistente) {
       productoExistente.cantidad++;
@@ -117,14 +112,16 @@ async function agregarAlCarrito(e) {
       productosElegidos.push(productoAgregado);
     }
     actualizarNumerito();
-    localStorage.setItem("productosEnElCarrito", JSON.stringify(productosElegidos));
+    localStorage.setItem(
+      "productosEnElCarrito",
+      JSON.stringify(productosElegidos)
+    );
   } catch (error) {
     console.error("Error al agregar producto al carrito:", error);
   }
 }
- 
 
-
+//Guardo productos en LS y actualizo el numerito.
 if (productosElegidosEnLS) {
   productosElegidos = JSON.parse(productosElegidosEnLS);
   actualizarNumerito();
@@ -132,15 +129,14 @@ if (productosElegidosEnLS) {
   productosElegidos = [];
 }
 
-
-
-
-
 //Funcion para el numerito del carrito
 productosElegidos = localStorage.getItem(productosElegidos) || [];
 function actualizarNumerito() {
   if (Array.isArray(productosElegidos)) {
-    let nuevoNumerito = productosElegidos.reduce((acc, producto) => acc + producto.cantidad, 0);
+    let nuevoNumerito = productosElegidos.reduce(
+      (acc, producto) => acc + producto.cantidad,
+      0
+    );
     numerito.innerText = nuevoNumerito;
   } else {
     console.error("productosElegidos no es un array");
@@ -165,66 +161,47 @@ function filtrarTorta(productosALaVenta, busqueda) {
 botonBusqueda.addEventListener("click", async (event) => {
   event.preventDefault();
   const busqueda = barraBusqueda.value.toLowerCase();
-  const productos = await obtenerProductos(); 
+  const productos = await obtenerProductos();
   const resultadoBusqueda = productos.filter((producto) =>
     producto.nombre.toLowerCase().includes(busqueda)
   );
   mostrarCards(resultadoBusqueda);
 });
 
-//parte del slider de precios
-const preciosConIVA = productosALaVenta.map((producto) =>
-  Number((producto.precio * IVA).toFixed(2))
-);
-
-const minPrecio = Math.min(...preciosConIVA);
-const maxPrecio = Math.max(...preciosConIVA);
-
+//Asigno html del slider de precios.
 const precioSlider = document.querySelector("#precioSlider");
 const precioValor = document.querySelector("#precioValor");
-
-precioSlider.min = minPrecio;
-precioSlider.max = maxPrecio + 1;
-precioSlider.value = minPrecio;
-precioValor.textContent = minPrecio;
 
 precioSlider.addEventListener("input", async () => {
   const precio = precioSlider.value;
   precioValor.textContent = precio;
-  const productos = await obtenerProductos(); 
-  const filtrado = productos.filter((producto) => producto.precio * IVA <= precio);
-  mostrarCards(filtrado); 
+  const productos = await obtenerProductos();
+  const filtrado = productos.filter(
+    (producto) => producto.precio * IVA <= precio
+  );
+  mostrarCards(filtrado);
 });
-
 
 //Esto es para que el carrito no se me resetee al agregar cosas.
 function productoPasado() {
-
-  const productosElegidosEnLS = obtener()
+  const productosElegidosEnLS = obtener();
 
   if (productosElegidosEnLS) {
-
     productosElegidos = productosElegidosEnLS;
 
     actualizarNumerito();
 
-    return productosElegidos
-
+    return productosElegidos;
   } else {
-
-    return productosElegidos = [];
-
+    return (productosElegidos = []);
   }
-
 }
 
-productoPasado()
-
+productoPasado();
 
 function obtener() {
+  let productosElegidosEnLS =
+    JSON.parse(localStorage.getItem("productosEnElCarrito")) || false;
 
-  let productosElegidosEnLS = JSON.parse(localStorage.getItem("productosEnElCarrito")) || false;
-  
-  return productosElegidosEnLS
-  
-  }
+  return productosElegidosEnLS;
+}
