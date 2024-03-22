@@ -61,7 +61,7 @@ function losProductosCarrito() {
   botonesEliminarFuncionales();
   actualizarElTotal();
   } else if (comprarCosas()) {
-    //Aca vuelvo a poner todo a la normalidad---> ver si es si o si necesario
+    //Aca vuelvo a poner todo a la normalidad
     contenedorCarritoVacio.classList.add("d-none");
     contenedorProductos.classList.add("d-none");
     contenedorAcciones.classList.add("d-none");
@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function obtenerDatosForm() {
     formulario.addEventListener("submit", (e) => {
       e.preventDefault();
-      // Verifica que los elementos existan antes de acceder a sus valores que guarde en el session storagr
+      // veo que los elementos existan antes de acceder a sus valores que guarde en el session storagr
       if (nombreInput && telInput && domicilioInput) {
         localStorage.setItem("nombreUsuario", nombreInput.value);
                 localStorage.setItem("telUsuario", telInput.value);

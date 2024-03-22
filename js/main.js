@@ -19,7 +19,6 @@ let productosElegidosEnLS = localStorage.getItem("productosEnElCarrito");
 const barraBusqueda = document.querySelector("#formularioDeBusqueda");
 const botonBusqueda = document.querySelector(".botonBuscar");
 
-//Hago fetch
 let productosALaVenta = [];
 //Hago fetch
 fetch("./parteJson/db.json")
@@ -76,7 +75,6 @@ function mostrarCards(productos) {
     botonesAgregarFuncionales();
     listaProd.append(li);
   });
-  // No necesito return, ya la función todo lo que tiene que hacer
 }
 
  //funcionalidad a botones de compra:
@@ -131,38 +129,7 @@ async function agregarAlCarrito(e) {
     console.error("Error al agregar producto al carrito:", error);
   }
 }
- /* function agregarAlCarrito(e) {
-  Toastify({
-
-    text: "Producto agregado al carrito",
-
-    gravity: "bottom",
-
-    duration: 3000
-    
-    }).showToast();
-    const idDelBoton = e.currentTarget.id;
-    const productoAgregado = productosALaVenta.find(
-      (producto) => producto.id === idDelBoton
-    );
-
-    if (productosElegidos.some(producto => producto.id === idDelBoton)) {
-      const indexProd = productosElegidos.findIndex(
-        producto => producto.id === idDelBoton
-      );
-      productosElegidos[indexProd].cantidad++;
-    } else {
-      productoAgregado.cantidad = 1;
-      productosElegidos.push(productoAgregado);
-    }
-    actualizarNumerito();
-    localStorage.setItem(
-      "productosEnElCarrito",
-      JSON.stringify(productosElegidos)
-    );
-    productosElegidos = productoPasado();
-}
- */
+ 
 
 
 if (productosElegidosEnLS) {
@@ -231,9 +198,9 @@ precioValor.textContent = minPrecio;
 precioSlider.addEventListener("input", async () => {
   const precio = precioSlider.value;
   precioValor.textContent = precio;
-  const productos = await obtenerProductos(); // Espera a que se resuelva la promesa
+  const productos = await obtenerProductos(); 
   const filtrado = productos.filter((producto) => producto.precio * IVA <= precio);
-  mostrarCards(filtrado); // Reutilizo la misma función pero con otro parámetro
+  mostrarCards(filtrado); 
 });
 
 
