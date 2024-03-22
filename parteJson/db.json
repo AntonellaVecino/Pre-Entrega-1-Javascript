@@ -173,5 +173,66 @@
           " frosting de vainilla"
         ],
         "img": "https://cdn.pixabay.com/photo/2018/10/04/15/19/cupcake-3723832_640.jpg"
+      },
+      {
+        "id": "17",
+        "nombre": "Caja de 12 Donas Surtidas",
+        "precio": 3500,
+        "ingredientes": [
+          "Masa suave de vainilla",
+          " frosting de vainilla, chocolate y fresa",
+          " relleno de chocolate, mermelada de fresa y dulce de leche"
+        ],
+        "img": "https://th.bing.com/th/id/OIG3.LxiLRdf_M3WKz2LzuCpR?w=270&h=270&c=6&r=0&o=5&pid=ImgGn"
+      },
+      {
+        "id": "18",
+        "nombre": "Caja de 6 Cookies grandes de chocolate y nuez",
+        "precio": 1800,
+        "ingredientes": [
+          "Masa fudge de chocolate",
+          " chispas de chocolate y trozos de nuez"
+        ],
+        "img": "https://th.bing.com/th/id/OIG4.6SB6BnKhvzdzftpf0wnh?w=270&h=270&c=6&r=0&o=5&pid=ImgGn"
+      },
+      {
+        "id": "19",
+        "nombre": "Caja con 12 Polvorones de Almendra",
+        "precio": 3000,
+        "ingredientes": [
+          "Mazapan de almendra",
+          " glucosa"
+        ],
+        "img": "https://th.bing.com/th/id/OIG4.ZmwpiA57zVIvW.rkpnzI?w=270&h=270&c=6&r=0&o=5&pid=ImgGn"
+      },
+      {
+        "id": "20",
+        "nombre": "Linzer Torte",
+        "precio": 4000,
+        "ingredientes": [
+          "Base de almendras",
+          " relleno de frutos rojos"
+        ],
+        "img": "https://th.bing.com/th/id/OIG4.twPBfiwQvm1QuVIzvfzn?w=270&h=270&c=6&r=0&o=5&pid=ImgGn"
+      },
+      {
+        "id": "20",
+        "nombre": "Pastafrola de Membrillo",
+        "precio": 2300,
+        "ingredientes": [
+          "Masa sucreé de vainilla",
+          " relleno de membrillo"
+        ],
+        "img": "https://tse3.mm.bing.net/th?id=OIP.nrD0TpycAvo9ks1Vl9YxmgHaE8&pid=Api&P=0&h=180"
+      },
+      {
+        "id": "21",
+        "nombre": "3 CakePops de chocolate",
+        "precio": 1200,
+        "ingredientes": [
+          "Brownie húmedo",
+          " bañado en chocolate de colores"
+        ],
+        "img": "https://cdn.pixabay.com/photo/2018/04/15/09/40/dessert-3321230_640.jpg"
       }
     ]

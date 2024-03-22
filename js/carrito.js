@@ -93,7 +93,7 @@ function sacarDelCarrito(e) {
   );
   swal({
     title: "Seguro que quieres eliminar el producto?",
-    text: "Qué lástima, es tan rico....",
+    text: `Eliminarías todos los que elegiste`,
     icon: "warning",
     buttons: true,
     dangerMode: true,
@@ -120,7 +120,7 @@ botonVaciar.addEventListener("click", vaciarElCarrito);
 function vaciarElCarrito() {
   swal({
     title: "Seguro que quieres vaciar tu carrito?",
-    text: "Si lo haces, no podré alimentar al michi este mes...",
+    text: `Estás eliminando ${productosElegidos.length} productos`,
     icon: "warning",
     buttons: true,
     dangerMode: true,
