@@ -120,7 +120,7 @@ botonVaciar.addEventListener("click", vaciarElCarrito);
 function vaciarElCarrito() {
   swal({
     title: "Seguro que quieres vaciar tu carrito?",
-    text: `Estás eliminando ${productosElegidos.length} productos`,
+    text: `Estás eliminando ${productosElegidos.reduce((total, producto) => total + producto.cantidad, 0)} productos`,
     icon: "warning",
     buttons: true,
     dangerMode: true,

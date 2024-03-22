@@ -50,6 +50,7 @@ fetch("./parteJson/db.json")
       console.error("Error al obtener los productos:", error);
     }
   }
+  
 
 
 
@@ -107,23 +108,15 @@ async function agregarAlCarrito(e) {
     if (!productoAgregado) {
       throw new Error("Producto no encontrado");
     }
-
-    // Verificar si el producto ya está en el carrito
     const productoExistente = productosElegidos.find(producto => producto.id === idDelBoton);
 
     if (productoExistente) {
-      // Si el producto ya está en el carrito, incrementar la cantidad
       productoExistente.cantidad++;
     } else {
-      // Si el producto no está en el carrito, agregarlo con cantidad 1
       productoAgregado.cantidad = 1;
       productosElegidos.push(productoAgregado);
     }
-
-    // Actualizar el numerito del carrito
     actualizarNumerito();
-
-    // Guardar los productos en el localStorage
     localStorage.setItem("productosEnElCarrito", JSON.stringify(productosElegidos));
   } catch (error) {
     console.error("Error al agregar producto al carrito:", error);

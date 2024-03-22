@@ -187,7 +187,7 @@
       },
       {
         "id": "18",
-        "nombre": "Caja de 6 Cookies grandes de chocolate y nuez",
+        "nombre": "Caja de 6 Cookies de chocolate y nuez",
         "precio": 1800,
         "ingredientes": [
           "Masa fudge de chocolate",
@@ -197,7 +197,7 @@
       },
       {
         "id": "19",
-        "nombre": "Caja con 12 Polvorones de Almendra",
+        "nombre": "Caja de 12 Polvorones de Almendra",
         "precio": 3000,
         "ingredientes": [
           "Mazapan de almendra",
@@ -216,7 +216,7 @@
         "img": "https://th.bing.com/th/id/OIG4.twPBfiwQvm1QuVIzvfzn?w=270&h=270&c=6&r=0&o=5&pid=ImgGn"
       },
       {
-        "id": "20",
+        "id": "21",
         "nombre": "Pastafrola de Membrillo",
         "precio": 2300,
         "ingredientes": [
@@ -226,7 +226,7 @@
         "img": "https://tse3.mm.bing.net/th?id=OIP.nrD0TpycAvo9ks1Vl9YxmgHaE8&pid=Api&P=0&h=180"
       },
       {
-        "id": "21",
+        "id": "22",
         "nombre": "3 CakePops de chocolate",
         "precio": 1200,
         "ingredientes": [
