@@ -67,9 +67,9 @@ function mostrarCards(productos) {
         </div>
         </div>
         `;
-    botonesAgregarFuncionales();
     listaProd.append(li);
   });
+  botonesAgregarFuncionales();
 }
 
 //funcionalidad a botones de compra:
